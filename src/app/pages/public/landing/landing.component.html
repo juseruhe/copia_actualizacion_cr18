@@ -1,0 +1,675 @@
+<!-- <div id="content-header" class="w-100 bg-white">
+  <app-public-header>
+    <li class="nav-item active">
+      <button type="button" class="btn btn-link">
+        <a [routerLink]="['/landing']" fragment="begin" class="text-primary">Inicio</a>
+      </button>
+    </li>
+    <li class="nav-item">
+      <button type="button" class="btn btn-link">
+        <a [routerLink]="['/landing']" fragment="context" class="text-primary">Contexto</a>
+      </button>
+    </li>
+    <li class="nav-item">
+      <button type="button" class="btn btn-link">
+        <a [routerLink]="['/landing']" fragment="who" class="text-primary">¿Para quiénes?</a>
+      </button>
+    </li>
+    <li class="nav-item">
+      <button type="button" class="btn-auth btn waves-effect waves-light btn-rounded btn-outline-primary">
+        <a [routerLink]="['/register']">Registro</a>
+      </button>
+    </li>
+    <li class="nav-item">
+      <button type="button" class="btn-auth btn waves-effect waves-light btn-rounded btn-primary">
+        <a [routerLink]="['/login']">Ingresar</a>
+      </button>
+    </li>
+  </app-public-header>
+</div> -->
+
+<!--
+<div class="row mt-5 pt-4">
+  <div class="content-yt-video col-12 px-0">
+    <div class="jiraiya pointer" (click)="showYT()"></div>
+    <div class="content-yt w-100">
+      <img src="./assets/images/landing/head-bim.jpg" alt="">
+    </div>
+  </div>
+</div>
+-->
+
+<!-- 
+<div class="row mt-5 pt-4">
+<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner"> -->
+    <!--
+    <div class="carousel-item active">
+      <picture (click)="goToEncuestaNacional($event)">
+        <source srcset="./assets/images/landing/Banner-ENB2023.png" width="100%" height="100%" media="(min-width:769px)">
+        <source srcset="./assets/images/landing/BannerMovil-ENB2023.png" width="100%" height="100%"  media="(max-width:768px)">
+        <img src="./assets/images/landing/Banner-ENB2023.png" alt="Encuesta Nacional Ruta BIM">
+      </picture>
+    </div>
+    -->
+    <!-- <div class="carousel-item active">
+      <picture (click)="showYT()">
+        <source srcset="./assets/images/landing/Banner-RUTABIM.png" width="100%" height="100%" media="(min-width:769px)">
+        <source srcset="./assets/images/landing/BannerMovil-RUTABIM.png" width="100%" height="100%"  media="(max-width:768px)">
+        <img src="./assets/images/landing/Banner-RUTABIM.png" alt="Ruta BIM">
+      </picture>
+    </div>
+    
+    <div class="carousel-item">
+      <picture (click)="goToResultados($event)" >
+        <source srcset="./assets/images/landing/resultados2.png" width="100%" height="100%"   >
+        <img src="./assets/images/landing/resultados2.png" alt="Ruta BIM">
+      </picture>
+    </div>
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+</div>
+
+
+<div id="begin" class="row bg-white py-5">
+  <div class="col-12">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 p-3">
+          <h2 class="mb-2">Inicio</h2>
+          <div class="line"></div>
+          <p>
+            Camacol y el BIM Forum Colombia comprometidos con la transformación digital del sector
+            de la construcción crearon Ruta BIM, una herramienta de gestión empresarial pensada
+            para la autoevaluación de las organizaciones de la cadena de valor del sector.
+          </p>
+        </div>
+        <div class="col-sm-12 col-md-6 p-3">
+          <div class="box-image w-100 h-100">
+            <img src="./assets/images/landing/begin.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="context" class="row bg-gray py-5">
+  <div class="col-12">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 d-sm-none d-none d-md-flex p-3">
+          <div class="box-image w-100 h-100">
+            <img src="./assets/images/landing/bilal.jpg" alt="">
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 p-3">
+          <h2 class="mb-2">Contexto</h2>
+          <div class="line"></div>
+          <p>Ruta BIM es una herramienta de conocimiento cuyo objetivo es identificar el desarrollo de
+            la metodología BIM en las organizaciones o equipos de proyecto y se basa en las
+            investigaciones publicadas por el <a href="https://independentresearcher.academia.edu/BilalSuccar"
+              target="_blank">Dr. Bilal Succar</a>, investigador independiente y fundador
+            de <a href="https://bimexcellence.org/" target="_blank">BIMe Initiative</a>.
+          </p>
+          <br>
+          <p>
+            Esta herramienta se rige bajo la licencia de uso: Creative Commons Attribution –
+            Noncommercial – Sharelike 3.0 Unported License (Más información). (<a
+              href="https://bimexcellence.org/wp-content/uploads/301in.ES-Matriz-de-Madurez-BIM.pdf" target="_blank">Más
+              información</a>).
+          </p>
+          <br>
+          <div class="mini-logo d-inline-block mr-3">
+            <img src="./assets/images/landing/by-nc-sa.png" alt="">
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 d-sm-flex d-md-none p-3">
+          <div class="box-image w-100 h-100">
+            <img src="./assets/images/landing/bilal.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+    <!--loader start-->
+    <div class="loader">
+      <div id="loader">
+          <ul>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+              <li></li>
+          </ul>
+      </div>
+  </div>
+
+  <!-- <img src="assets/imagesNew/slider-bg1.jpg" alt=""> -->
+
+  <!--loader end-->
+
+  <!--header start-->
+  <header id="home">
+      <nav class="navbar navbar-top navbar-expand-lg top-center-logo nav-line">
+          <div class="container">
+              <a href="#home" title="Logo" class="logo scroll">
+                  <img src="assets/imagesNew/Bim-Forum-Camacol-logo.png" class="logo-dark" alt="logo">
+                  <img src="assets/imagesNew/Bim-Forum-Camacol-logo-blanco.png" alt="logo" class="logo-light default">
+              </a>
+              <div class="side-nav-btn" id="sidemenu_toggle">
+                  <span class="bg-white"></span>
+                  <span class="bg-white"></span>
+                  <span class="bg-white"></span>
+              </div>
+              <div class="social_icons">
+                  <ul>
+                      <li><a href="#." class="facebook_bg_hvr text-white"><i class="fa fa-facebook"
+                                  aria-hidden="true"></i></a> </li>
+                      <li><a href="#." class="twitter_bg_hvr text-white"><i class="fa fa-times"
+                                  aria-hidden="true"></i></a> </li>
+                      <li><a href="#." class="instagram_bg_hvr text-white"><i class="fa fa-instagram"
+                                  aria-hidden="true"></i></a> </li>
+                      <li><a href="#." class="instagram_bg_hvr text-white"><i class="fa fa-youtube-play"
+                                  aria-hidden="true"></i></a> </li>
+                      <li><a href="#." class="linkdin_bg_hvr text-white"><i class="fa fa-linkedin"
+                                  aria-hidden="true"></i></a> </li>
+                      <li><a href="#." class="linkdin_bg_hvr text-white"><i class="fa fa-play-circle"
+                                  aria-hidden="true"></i></a> </li>
+
+
+                  </ul>
+
+         
+   
+              </div>
+
+              <div class="collapse navbar-collapse" id="container">
+                  <ul class="navbar-nav ml-auto mont-font">
+                      <li class="nav-item">
+                          <a class="nav-link scroll whitecolor active" href="#home">Inicio</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link scroll whitecolor" href="#about">¿Qué es?</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link scroll whitecolor" href="#team">¿Para quienes?</a>
+                      </li>
+                      <!--<li class="nav-item">
+                      <a class="nav-link scroll whitecolor" href="#work">Registro</a>
+                  </li>-->
+                  </ul>
+                  <ul class="navbar-nav mr-auto mont-font">
+                      <li class="nav-item">
+                          <a class="nav-link scroll whitecolor" href="#packages">Registro</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link scroll whitecolor" href="#client">Ingresar</a>
+                      </li>
+
+                  </ul>
+              </div>
+          </div>
+      </nav>
+      <!-- side menu -->
+      <div class="side-menu">
+          <div class="inner-wrapper">
+              <span class="btn-close" id="btn_sideNavClose"><i></i><i></i></span>
+              <nav class="side-nav">
+                  <ul class="navbar-nav">
+                      <li class="nav-item">
+                          <a class="nav-link scroll" href="#home">Inicio</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link scroll" href="#about">¿Qué es?</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link scroll" href="#team">¿Para quienes?</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link scroll" href="#work">Registro</a>
+                      </li>
+                      <li class="nav-item">
+                          <a class="nav-link scroll" href="#packages">Ingresar</a>
+                      </li>
+                      <!-- <li class="nav-item">
+                      <a class="nav-link scroll" href="#client">Clients</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link scroll" href="#blog">Blog</a>
+                  </li>
+                  <li class="nav-item">
+                      <a class="nav-link scroll" href="#contact">Contact</a>
+                  </li> -->
+                  </ul>
+              </nav>
+
+              <div class="side-footer text-white w-100">
+                  <ul class="social-icons-simple">
+                      <li><a href="#." class="facebook_bg_hvr2"><i class="fa fa-facebook" aria-hidden="true"></i></a>
+                      </li>
+                      <li><a href="#." class="twitter_bg_hvr2"><i class="fa fa-twitter" aria-hidden="true"></i></a>
+                      </li>
+                      <li><a href="#." class="linkdin_bg_hvr2"><i class="fa fa-linkedin" aria-hidden="true"></i></a>
+                      </li>
+                      <li><a href="#." class="instagram_bg_hvr2"><i class="fa fa-instagram"
+                                  aria-hidden="true"></i></a> </li>
+                  </ul>
+                  <p class="whitecolor">&copy; Todos los derechos reservados CAMACOL 2024, Diseñado y desarrollado por
+                      <a class="web-link" href="http://www.tdclab.com/" target="_blank">TDCLAB </a>
+                  </p>
+              </div>
+          </div>
+      </div>
+      <!-- End side menu -->
+
+  </header>
+  <!--header end-->
+
+  <!--slider start-->
+  <section class="p-0">
+      <h2 class="d-none">Display None</h2>
+      <div id="rev_slider_8_1_wrapper" class="rev_slider_wrapper fullscreen-container single_slide" data-alias="weone"
+          data-source="gallery" style="background:transparent;padding:0px;">
+          <!-- START REVOLUTION SLIDER 5.4.8.1 fullscreen mode -->
+          <div id="rev_slider_8_1" class="rev_slider fullscreenbanner" style="display:none;" data-version="5.4.8.1">
+              <ul><!-- SLIDE  -->
+                  <!-- SLIDE 1  -->
+                  <li>
+                      <!-- MAIN IMAGE -->
+                      <img src="assets/imagesNew/slider-bg1.jpg" alt="" data-bgposition="center center" data-bgfit="cover"
+                      data-bgrepeat="no-repeat" data-bgparallax="off" class="rev-slidebg" data-no-retina>
+                      <!-- LAYERS -->
+
+                      <!-- LAYER NR. 1 -->
+                      <div class="tp-caption   tp-resizeme rs-parallaxlevel-4"
+                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                          data-y="['top','top','top','top']" data-voffset="['220','155','70','45']"
+                          data-width="['600','470','470','350']" data-height="['550','430','430','350']"
+                          data-whitespace="nowrap" data-type="image" data-responsive_offset="on"
+                          data-frames='[{"delay":80,"speed":1510,"frame":"0","from":"x:right;z:0;rX:0;rY:0;rZ:0;sX:0.7;sY:0.7;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":350,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                          data-textAlign="['inherit','inherit','inherit','inherit']" data-paddingtop="[0,0,0,0]"
+                          data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                          style="z-index: 5; min-width: 333px; max-width: 650px; white-space: nowrap; font-size: 20px; line-height: 22px; font-weight: 400; color: #ffffff; letter-spacing: 0px;font-family:Open Sans;display:block;background:transparent; border:5px solid #FFFFFF;">
+                          <div> </div>
+                      </div>
+
+                      <!--style="z-index: 6;"><img src="images/slider-img2.jpg" alt="" data-ww="['331px','331px','331px','331px']" data-hh="['287px','287px','287px','287px']" data-no-retina> </div>-->
+
+                      <!-- LAYER NR. 2 -->
+                      <div class="tp-caption tp-resizeme rs-parallaxlevel-6"
+                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                          data-y="['top','top','top','top']" data-voffset="['300','200','130','98']"
+                          data-fontsize="['60','45','45','35']" data-lineheight="['75','75','75','40']"
+                          data-width="['556','556','556','300']" data-height="['none','none','none','87']"
+                          data-whitespace="nowrap" data-type="text" data-responsive_offset="on"
+                          data-frames='[{"delay":80,"speed":1510,"frame":"0","from":"x:right;z:0;rX:0;rY:0;rZ:0;sX:0.7;sY:0.7;skX:0;skY:0;opacity:0;","to":"o:1;","ease":"Power4.easeOut"},{"delay":"wait","speed":350,"frame":"999","to":"opacity:0;","ease":"Power3.easeInOut"}]'
+                          data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
+                          data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                          style="z-index: 7; min-width: 556px; max-width: 556px; white-space: nowrap; font-size: 60px; line-height: 75px; font-weight: 500; color: #FFFFFF; letter-spacing: 0px;font-family:Montserrat;">
+                          RUTA BIM</div>
+
+                      <!-- LAYER NR. 3 -->
+                      <div class="tp-caption   tp-resizeme rs-parallaxlevel-6"
+                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                          data-y="['top','top','top','top']" data-voffset="['475','330','288','210']"
+                          data-fontsize="['60','45','45','40']" data-lineheight="['75','75','45','35']"
+                          data-width="['556','556','556','300']" data-height="['none','none','none','87']"
+                          data-whitespace="nowrap" data-type="text" data-responsive_offset="on"
+                          data-frames='[{"delay":100,"split":"chars","splitdelay":0.1,"speed":1480,"split_direction":"random","frame":"0","from":"y:50px;sX:1;sY:1;opacity:0;fb:20px;","color":"rgba(0,0,0,0)","to":"o:1;fb:0;","ease":"Power4.easeInOut"},{"delay":"wait","speed":350,"frame":"999","color":"transparent","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                          data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
+                          data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                          style="z-index: 17; min-width: 556px; max-width: 556px; white-space: nowrap; font-size: 60px; line-height: 75px; font-weight: 500; color: #FFFFFF; letter-spacing: 0px;font-family:Montserrat;">
+                          Para todos...</div>>
+
+                      <!-- LAYER NR. 4 -->
+                      <div class="tp-caption NotGeneric-Title tp-resizeme rs-parallaxlevel-6 font-weight-100 text-white"
+                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                          data-y="['middle','middle','middle','middle']" data-voffset="['210','200','150','120']"
+                          data-frames='[{"from":"y:50px;opacity:0;","speed":1000,"to":"o:1;","delay":800,"ease":"Power4.easeInOut"},{"delay":"wait","speed":1000,"to":"y:[175%];","mask":"x:inherit;y:inherit;s:inherit;e:inherit;","ease":"Power2.easeInOut"},{"frame":"hover","speed":"300","ease":"Power1.easeInOut","to":"o:1;rX:0;rY:0;rZ:0;z:0;","style":"c:rgba(255, 255, 255, 1.00);bc:rgba(255, 255, 255, 1.00);bw:2px 2px 2px 2px;"}]'
+                          data-textAlign="['center','center','center','center']" style="z-index:99;">
+                          <a href="#." class="btn slider-btn1 hvr-shutter-out-horizontal-blk"
+                              style="    background: #003e8c !important;">Ingresar</a>
+                          <a href="#." class="btn slider-btn3 whitecolor border-white text hvr-shutter-out-horizontal"
+                              style="    background: white;
+                              color: black;">Registrarse</a>
+                      </div>
+
+                      <!-- LAYER NR. 5 -->
+                      <div class="tp-caption   tp-resizeme rs-parallaxlevel-6"
+                          data-x="['center','center','center','center']" data-hoffset="['0','0','0','0']"
+                          data-y="['top','top','top','top']" data-voffset="['390','265','200','150']"
+                          data-fontsize="['80','65','65','50']" data-lineheight="['75','75','75','43']"
+                          data-width="['556','556','556','300']" data-height="['none','none','none','87']"
+                          data-whitespace="nowrap" data-type="text" data-responsive_offset="on"
+                          data-frames='[{"delay":100,"split":"chars","splitdelay":0.1,"speed":1480,"split_direction":"random","frame":"0","from":"y:50px;sX:1;sY:1;opacity:0;fb:20px;","color":"rgba(0,0,0,0)","to":"o:1;fb:0;","ease":"Power4.easeInOut"},{"delay":"wait","speed":350,"frame":"999","color":"transparent","to":"opacity:0;fb:0;","ease":"Power3.easeInOut"}]'
+                          data-textAlign="['center','center','center','center']" data-paddingtop="[0,0,0,0]"
+                          data-paddingright="[0,0,0,0]" data-paddingbottom="[0,0,0,0]" data-paddingleft="[0,0,0,0]"
+                          style="z-index: 17; min-width: 556px; max-width: 556px; white-space: nowrap; font-size: 60px; line-height: 75px; font-weight: 600; color: #FFFFFF; letter-spacing: 0px;font-family:Montserrat;">
+Colombia</div>
+                  </li>
+              </ul>
+              <div class="tp-bannertimer" style="height: 5px; background: rgba(0,0,0,0.15);"></div>
+          </div>
+      </div>
+      <!-- END REVOLUTION SLIDER -->
+
+  </section>
+  <!--slider end-->
+
+
+  <!-- inicio start-->
+  <section class="about" id="about">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-6 pr-5 wow fadeInLeft">
+
+
+                  <h2 class="text-capitalize wow fadeInUp" data-wow-delay="400ms">Inicio</h2>
+                  <hr style="    background: red;
+                      height: 8px;
+                      width: 22%;
+                      display: inline-flex;
+                      flex-wrap: nowrap;
+                      margin-top: 1%;">
+                  <p class="pt-2 wow fadeInUp" data-wow-delay="500ms"
+                      style="    font-size: 20px; text-align:justify;">Camacol y el BIM
+                      Forum Colombia comprometidos
+                      con la transformación digital del sector de la construcción crearon Ruta BIM, una herramienta de
+                      gestión empresarial pensada para la autoevaluación de las organizaciones de la cadena de valor
+                      del sector.</p>
+
+
+              </div>
+
+              <div class="col-lg-6 pl-6">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/SK_w0gyBcn8?si=hGcfVpw0mMJvbDRl"
+                      title="YouTube video player" frameborder="0"
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                      allowfullscreen></iframe>
+              </div>
+
+          </div>
+      </div>
+  </section>
+  <!--inicio end-->
+
+
+
+  <!--About start-->
+  <section class="about" id="about">
+      <div class="container">
+          <div class="row">
+              <div class="col-lg-6 pr-5 wow fadeInLeft">
+                  <div class="rare-box"></div>
+                  <img src="assets/imagesNew/image1.jpg" class="image position-relative w-100" alt="">
+              </div>
+              <div class="col-lg-6 pl-6">
+
+                  <h2 class="text-capitalize wow fadeInUp" data-wow-delay="400ms">Contexto
+                  </h2>
+                  <p class="pt-2 wow fadeInUp" data-wow-delay="500ms" style=" text-align:justify;">Ruta BIM es una herramienta de conocimiento
+                      basada en las investigaciones publicadas por el Dr. Bilal Succar investigador independiente y
+                      fundador de BIME initiative.</p>
+
+                  <h2 class=" text-capitalize wow fadeInUp" data-wow-delay="400ms" style="font-size: 25px;
+                  margin-top: 9%;
+                  text-align: justify;">Su objetivo es identificar el
+                      desarollo de la <a class="gradient">metodología BIM</a> en las organizaciones o equipos de
+                      proyectos
+                      </h2>
+
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--About end-->
+
+  <!--Counter start-->
+  <section class="counter">
+      <div class="container">
+          <div class="row">
+              <div class="col-md-5 wow fadeInLeft">
+                  <h3 class="text-capitalize">Varias organizaciones en Colombia</h3>
+                  <span class="hr-line"></span>
+                  <p class="pt-3" style="  text-align:justify;">Ya están haciendo parte del proceso de implementación de la metodología BIM y están
+                      mejorando sus procesos, la gestión de la información y otras mejoras que aportan al crecimiento
+                      del sector.</p>
+              </div>
+              <div class=" col-md-7 text-center wow fadeInRight">
+                  <div class="row">
+                      <div class="col-md-4">
+                          <div class="icon-block">
+                              <div class="icon">
+                                  <i class="fa fa-smile-o gradient"></i>
+                              </div>
+                              <div class="counters mt-4">
+                                  <h3><span class="count_nums" data-to="2500" data-speed="700">700</span><i
+                                          class="fa fa-plus"></i></h3>
+                              </div>
+                              <p>Personas registradas</p>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="icon-block">
+                              <div class="icon">
+                                  <i class="fa fa-check-square gradient" aria-hidden="true"i> </i>
+                              </div>
+                              <div class="counters mt-4">
+                                  <h3><span class="count_nums" data-to="9500" data-speed="450">450</span><i
+                                          class="fa fa-plus"></i></h3>
+                              </div>
+                              <p>Empresas en proceso</p>
+                          </div>
+                      </div>
+                      <div class="col-md-4">
+                          <div class="icon-block">
+                              <div class="icon">
+                                  <i class="fa fa-laptop gradient"></i>
+                              </div>
+                              <div class="counters mt-4">
+                                  <h3><span class="count_nums" data-to="6000" data-speed="300">300</span><i
+                                          class="fa fa-plus"></i></h3>
+                              </div>
+                              <p>Consultores registrados</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--Counter end-->
+
+  <!--Feature start-->
+  <section id="feature" class="feature circle-bg">
+      <div class="container">
+          <div class="row">
+              <div class="col-md text-center">
+                  <h2 class="wow fadeInUp" data-wow-delay="300">Somos parte del <span
+                          class="gradient">crecimiento</span>, optimización<br>y mejora en el sector de la <span
+                          class="gradient">construcción.</span></h2>
+              </div>
+          </div>
+          <div class="row">
+              <div class="col-lg-4">
+                  <div class="feature-box text-center shadow wow fadeInUp" data-wow-delay="500">
+                      <i class="fa fa-pencil-square-o gradient" aria-hidden="true"></i>
+                      <h5 class="mt-4">Colaboración temprana</h5>
+                      <p class="mt-3">BIM fomenta la colaboración entre todos los actores involucrados en un proyecto
+                          de construcción.</p>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="feature-box text-center shadow wow fadeInUp" data-wow-delay="400">
+                      <i class="fa fa-cog gradient"></i>
+                      <h5 class="mt-4">Estandarización y protocolos</h5>
+                      <p class="mt-3">Es fundamental establecer estándares y protocolos claros para la implementación
+                          de BIM en un proyecto.</p>
+                  </div>
+              </div>
+              <div class="col-lg-4">
+                  <div class="feature-box text-center shadow wow fadeInUp" data-wow-delay="500">
+                      <i class="fa fa-code gradient"></i>
+                      <h5 class="mt-4">Capacitación constante</h5>
+                      <p class="mt-3">El éxito en la implementación de BIM depende de la capacitación de los
+                          profesionales involucrados.</p>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--Feature end-->
+
+
+  <!--Team Start-->
+<!--   <section class="team" id="team">
+      <div class="container small-container">
+          <div class="row">
+              <div class="col-md text-center">
+                  <h5 class="pb-2 wow fadeInUp" data-wow-delay="300" style=" font-size: 30px;">¿Para quienes?</h5>
+                  <h2 class="wow fadeInUp" data-wow-delay="400">Para todas <span class="gradient">las empresas</span>
+                      de la cadena de valor</h2>
+                  <div class="wow fadeInLeft">
+                      <p class="pt-3">Ruta BIM está pensada para todas las empresas de la cadena de valor de la
+                          construcción que tienen un proceso de implementación BIM en curso, o que planean implementar
+                          la metodología al interior de su organización.
+                      </p>
+                      <p class="pt-3">
+                          Ruta BIM debe ser diligenciada por la persona encargada de dirigir los procesos de
+                          implementación en la organización quien debe tener conocimientos de los procesos y la
+                          cultura organizacional.</p>
+                  </div>
+              </div>
+          </div>
+          <div class="row m-0 wow fadeInUp" data-wow-delay="300">
+              <div class="col-lg-4 pl-0 pr-0">
+                  <img src="assets/imagesNew/central.png">
+              </div>
+
+          </div>
+      </div>
+  </section> -->
+  <!--Team end-->
+
+  <!--Parallax-->
+  <section class="parallax-bg parallax-bg-img parallaxie position-relative" id="m-parallax">
+      <div class="bg-overlay bg-white opacity-2"></div>
+      <div class="container text-center center-block">
+          <div class="row">
+              <div class="col-md">
+                  <div class="text-left mb-4"> <i class="fa fa-quote-left text-left mb-4"></i> </div>
+                  <h2 class="m-auto"><span class="gradient">La metodología BIM</span>, Un modelo digital de un
+                      edificio que integra toda la información del proyecto</h2>
+                  <div class="text-right mt-4"> <i class="fa fa-quote-right text-right"></i> </div>
+                  <h4 class="gradient mt-4"><a href="https://bimexcellence.org/">BIMe Initiative.</a></h4>
+              </div>
+          </div>
+      </div>
+  </section>
+  <!--Parallax Ends-->
+
+  <!-- Contact Start -->
+  <section class="contact-form circle-bg2 wow fadeInUp" data-wow-delay="300">
+      <div class="container">
+          <div class="row">
+              <div class="col-md">
+                  <h5 class="pb-2">¡Una herramienta de gestión empresarial!</h5>
+                  <h2 class="text-capitalize">RUTA <span class="gradient">BIM</span></h2>
+                  <p>Pensada para la autoevaluación de las organizaciones de la cadena de valor de la construcción.
+                  </p>
+              </div>
+          </div>
+          <form action="#." class="mt-50">
+
+              <div class="col-md-6 order-md-0">
+                  <button type="submit"
+                      class="btn custom-btn1 hvr-shutter-out-horizontal-blk w-100">Registrarse</button>
+              </div>
+
+          </form>
+      </div>
+  </section>
+  <!-- Contact end -->
+  <section class="contact-form wow fadeInUp" data-wow-delay="300">
+      <div class="container">
+          <div class="text-center">
+              <p>Con el apoyo de:</p>
+              <img src="assets/imagesNew/Con-el-apoyo-de.jpg">
+          </div>
+      </div>
+  </section>
+  <!-- Footer Start
+  
+   <footer>
+      <div class="container">
+          <div class="row wow fadeInUp" data-wow-delay="300">
+              <div class="col-md">
+                  <div class="footer_social_icons">
+                      <p class="text-center">© Todos los derechos reservados CAMACOL 2020, Diseñado y desarrollado por
+                          <a class="web-link" href="http://www.tdclab.com/" target="_blank">TDCLAB </a>
+                      </p>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+
+
+          <a href="#" class="btn-flotante fa fa-info"></a> 
+
+          <a href="#" class="btn-flotante1 fa fa-question"></a> 
+
+
+  </footer>  -->
+
+
+
+<!-- <div id="who" class="row bg-white py-5">
+  <div class="col-12">
+    <div class="container">
+      <div class="row">
+        <div class="col-sm-12 col-md-6 p-3">
+          <h2 class="mb-2">¿Para quiénes?</h2>
+          <div class="line"></div>
+          <p>Ruta BIM está pensada para todas las empresas de la cadena de valor de la construcción
+            que tienen un proceso de implementación BIM en curso, o que planean implementar la
+            metodología al interior de su organización.
+          </p>
+          <br>
+          <p>
+            Ruta BIM debe ser diligenciada por la persona encargada de dirigir los procesos de
+            implementación en la organización quien debe tener conocimientos de los procesos y la
+            cultura organizacional.
+          </p>
+          <div class="row mt-4">
+            <div class="col-12 text-center">
+              <button type="button" class="btn btn-lg waves-effect waves-light btn-rounded btn-primary">
+                <a [routerLink]="['/register']">Registrarse</a>
+              </button>
+            </div>
+          </div>
+        </div>
+        <div class="col-sm-12 col-md-6 p-3">
+          <div class="box-image w-100 h-100">
+            <img src="./assets/images/landing/who.jpg" alt="">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div> --> 

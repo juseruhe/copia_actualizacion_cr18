@@ -1,0 +1,15 @@
+.profile-avatar {
+  width: 31px;
+  height: 31px;
+  text-align: center;
+  padding-top: 7px;
+  display: inherit;
+  span {
+    display: block;
+  }
+}
+
+.profile-name {
+  font-weight: bold;
+  color: #3e5569;
+}

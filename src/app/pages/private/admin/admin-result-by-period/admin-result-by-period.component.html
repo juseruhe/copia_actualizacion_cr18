@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-12 mb-2" *ngIf="loader">
+    <ngb-progressbar type="secondary" [value]="100" [striped]="true" height="10px" [animated]="false"></ngb-progressbar>
+  </div>
+  <div class="col-12 text-right">
+    <i (click)="donwload()" class="fas fa-file-alt fa-2x pointer text-secondary mr-3"></i>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12">
+    <div class="row">
+      <div class="col-12"><h4>Resultados por período</h4></div>
+      <div class="col-12">
+        <div class="table-responsive">
+          <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

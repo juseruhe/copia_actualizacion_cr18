@@ -1,0 +1,19 @@
+<div class="row mb-4">
+  
+  <div class="col-12">
+    
+      <div >
+       <b class="font-weight-bold"> Dimensiones Matriz de Madurez</b>
+      </div>
+      <div  id="chart-card">
+        <canvas *ngIf="!loader" baseChart [datasets]="radarChartData" [options]="radarChartOptions" [labels]="radarChartLabels" [chartType]="radarChartType"></canvas>
+      </div>
+    
+    <p class="ml-2 my-4 text-justify">La puntuación de cada una de las respuestas corresponde a uno de los cinco (5) niveles de Madurez: (0) Inicial, (10)
+      Definido, (20) Gestionado, (30) Integrado y (40) Optimizado.
+      El promedio de los resultados obtenidos determina el nivel general de Madurez BIM de la organización.
+      </p>
+
+    <p class="mt-2 ml-2 mb-4 text-justify">A continuación se encuentra de la valoración en cada uno de los componentes. </p>
+  </div>
+</div>

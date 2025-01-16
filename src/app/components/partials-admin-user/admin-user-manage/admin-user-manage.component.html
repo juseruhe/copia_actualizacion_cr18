@@ -1,0 +1,100 @@
+<app-create-edit-modal [controlField]="controlField" [name]="name" [data]="data">
+  <ng-template #formContent let-form>
+    <div [formGroup]="form" class="row justify-content-sm-center">
+      <div class="col-12 col-sm-8">
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Nombre y apellidos</label>
+              <input type="text" class="form-control form-control-lg" formControlName="completeName">
+              <app-control-message-input [control]="form.controls.completeName"
+                [configMessages]="controlField?.messages?.completeName"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Correo eléctronico</label>
+              <input type="text" class="form-control form-control-lg" formControlName="email">
+              <app-control-message-input [control]="form.controls.email"
+                [configMessages]="controlField?.messages?.email"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Tipo identificación</label>
+              <select class="form-control form-control-lg" formControlName="documentType">
+                <option *ngFor="let item of data?.documentTypeList;" [value]="item.id">{{item.name}}</option>
+              </select>
+              <app-control-message-input [control]="form.controls.documentType"
+                [configMessages]="controlField?.messages?.documentType"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Número identificación</label>
+              <input type="text" class="form-control form-control-lg" formControlName="document">
+              <app-control-message-input [control]="form.controls.document"
+                [configMessages]="controlField?.messages?.document"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Área a la que pertenece</label>
+              <input type="text" class="form-control form-control-lg" formControlName="area">
+              <app-control-message-input [control]="form.controls.area"
+                [configMessages]="controlField?.messages?.area"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Ciudad</label>
+              <select class="form-control form-control-lg" formControlName="cityId">
+                <option *ngFor="let item of data?.cityList;" [value]="item.id">{{item.name}}</option>
+              </select>
+              <app-control-message-input [control]="form.controls.cityId"
+                [configMessages]="controlField?.messages?.cityId"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Teléfono</label>
+              <input type="text" class="form-control form-control-lg" formControlName="phone">
+              <app-control-message-input [control]="form.controls.phone"
+                [configMessages]="controlField?.messages?.phone"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Regional</label>
+              <select class="form-control form-control-lg" formControlName="regionalId">
+                <option *ngFor="let item of data?.regionalList;" [value]="item.id">{{item.name}}</option>
+              </select>
+              <app-control-message-input [control]="form.controls.regionalId"
+                [configMessages]="controlField?.messages?.regionalId"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Perfil</label>
+              <select class="form-control form-control-lg" formControlName="roleId">
+                <option *ngFor="let item of data?.roleList;" [value]="item.id">{{item.name}}</option>
+              </select>
+              <app-control-message-input [control]="form.controls.roleId"
+                [configMessages]="controlField?.messages?.roleId"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input formControlName="active" type="checkbox" class="custom-control-input" id="personBelongs">
+                <label class="custom-control-label" for="personBelongs">Estado</label>
+                <app-control-message-input [control]="form.controls.active"
+                  [configMessages]="controlField?.messages?.active"></app-control-message-input>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</app-create-edit-modal>

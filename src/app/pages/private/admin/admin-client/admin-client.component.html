@@ -1,0 +1,44 @@
+<!-- Start tabs -->
+<div class="row">
+  <div class="col">
+    <div class="row">
+      <div class="card tab-card bg-light w-100 pointer" [routerLink]="['/admin-client/company']" [routerLinkActive]="['active']">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h4>
+                Empresas
+              </h4>    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="row">
+      <div class="card tab-card bg-light w-100 pointer" [routerLink]="['/admin-client/person']" [routerLinkActive]="['active']">
+        <div class="card-body">
+          <div class="row">
+            <div class="col">
+              <h4>
+                Personas
+              </h4>    
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- End tabs -->
+
+<div class="row">
+  <div class="col-12 border content-tabs pt-3">
+    <div class="row">
+      <div class="col-12">
+        <router-outlet></router-outlet>
+      </div>
+    </div>
+  </div>
+</div>

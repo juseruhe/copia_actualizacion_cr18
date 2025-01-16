@@ -1,0 +1,272 @@
+<!--
+<div class="row">
+  <div class="col-12">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Evaluación de ruta BIM finalizada</h4>
+        <div class="row">
+          <div class="col-12 text-right">
+            <i  (click)="donwload()"class="fas fa-file-alt fa-2x pointer text-secondary mr-3"></i> 
+          </div>
+        </div>
+        <div class="row mt-2">
+          <div class="col-12 mb-3" *ngIf="loader">
+            <ngb-progressbar type="primary" [value]="(prepare ? 100 : 50)" [striped]="true" height="10px" [animated]="false">
+              {{ prepare ? 'Descargando documento...' : 'Procesando las gráficas...' }}
+            </ngb-progressbar>
+          </div>
+          <div class="col-12">
+            <ng2-smart-table [settings]="settings" [source]="recordList"></ng2-smart-table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+-->
+
+<!--  TECNOLOGÍA-->
+<div class="row border border-dark mt-4">
+  <div  class="col-12  ">
+    <div class="row">
+      <div class="col-2" style="background-color: #b9b9b9;"></div>
+      <div class="col-8 w-100"  style="background-color: #b9b9b9;">
+        <p  class="text-center font-weight-bold text-dark">TECNOLOGÍA</p>
+      </div>
+     <div class="col-2" style="background-color: #b9b9b9;"></div>
+    </div>
+ <div class="row"  *ngFor="let category of tecnologiaCategory">
+  <div class="col-12     ">
+    <div class="row">
+      <div class="col-10 border border-dark border-left-0 border-bottom-0 ">
+        <b  class="font-weight-bold titleMay">{{category}}</b>
+      </div>
+      <div class="col-2 border border-dark border-left-0 border-right-0 border-bottom-0"> 
+
+        <ng-container *ngIf="category == 'Hardware'; else redInterna;">
+        <b class="text-primary font-weight-bold">{{promedioHardware}}</b>
+        </ng-container>
+        <ng-template #redInterna>
+        <div *ngIf="category == 'Red interna'; else software;">
+          <b class="text-primary font-weight-bold">{{promedioRedInterna}}</b>
+        </div>
+        </ng-template>
+        <ng-template #software >
+          <b class="text-primary font-weight-bold">{{promedioSoftware}}</b>
+        </ng-template>
+
+      </div>
+    </div>
+  
+  <div class="row " *ngFor="let data of tecnologiaData">
+    <div class="col-4 border border-dark border-left-0 border-bottom-0 movilText " *ngIf="data.matrixDimensionName == category">
+     {{data.matrixTopicName}}
+    </div>
+    <div class="col-6 border border-dark border-bottom-0 border-left-0 movilText" *ngIf="data.matrixDimensionName == category">
+      {{data.matrixQuestionName}}
+    </div>
+    
+    <div *ngIf="data.matrixDimensionName == category" class="col-2 movilText  border border-dark  border-left-0 border-bottom-0 border-right-0" >
+      <span class="text-primary">{{data.score}}</span>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+<!--Procesos-->
+<div class="row border border-dark border-top-0">
+  <div  class="col-12  ">
+    <div class="row">
+      <div class="col-2" style="background-color: #b9b9b9;"></div>
+      <div class="col-8 w-100"  style="background-color: #b9b9b9;">
+        <p  class="text-center font-weight-bold text-dark">PROCESOS</p>
+      </div>
+     <div class="col-2" style="background-color: #b9b9b9;"></div>
+    </div>
+ <div class="row"  *ngFor="let category of procesosCategory">
+  <div class="col-12     ">
+    <div class="row">
+      <div class="col-10 border border-dark border-left-0 border-bottom-0 ">
+        <b *ngIf="reemplazarPorY(category); let categoryY" class="font-weight-bold titleMay">{{categoryY}}</b>
+      </div>
+      <div class="col-2  border border-dark border-left-0 border-right-0 border-bottom-0"> 
+
+        <ng-container *ngIf="category == 'Actividades & Flujos de trabajo'; else lg;">
+        <b  class="text-primary font-weight-bold">{{promedioAFT}}</b>
+        </ng-container>
+        <ng-template #lg>
+        <div *ngIf="category == 'Liderazgo & Gestión'; else mu;">
+          <b class="text-primary font-weight-bold">{{promedioLG}}</b>
+        </div>
+        </ng-template>
+        <ng-template #mu >
+          <b class="text-primary font-weight-bold">{{promedioMU}}</b>
+        </ng-template>
+
+      </div>
+    </div>
+  
+  <div class="row " *ngFor="let data of procesosData">
+    <div class="col-4 border border-dark border-left-0 border-bottom-0 movilText " *ngIf="data.matrixDimensionName == category">
+    {{data.matrixTopicName}}
+    </div>
+    <div class="col-6 border border-dark border-bottom-0 border-left-0 movilText" *ngIf="data.matrixDimensionName == category">
+      {{data.matrixQuestionName}}
+    </div>
+    <div *ngIf="data.matrixDimensionName == category" class="col-2 movilText border border-dark  border-left-0 border-bottom-0 border-right-0" >
+      <span class="text-primary">{{data.score}}</span>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+<!--Politicas-->
+<div class="row border border-dark border-top-0">
+  <div  class="col-12  ">
+    <div class="row">
+      <div class="col-2" style="background-color: #b9b9b9;"></div>
+      <div class="col-8 w-100"  style="background-color: #b9b9b9;">
+        <p  class="text-center font-weight-bold text-dark">POLÍTICAS</p>
+      </div>
+     <div class="col-2" style="background-color: #b9b9b9;"></div>
+    </div>
+ <div class="row"  *ngFor="let category of politicasCategory">
+  <div class="col-12     ">
+    <div class="row">
+      <div class="col-10 border border-dark border-left-0 border-bottom-0 ">
+        <b *ngIf="reemplazarMandatos(category); let categoryT;" class="font-weight-bold titleMay">{{categoryT}}</b>
+      </div>
+      <div class="col-2  border border-dark border-left-0 border-right-0 border-bottom-0"> 
+
+        <ng-container *ngIf="category == 'Contractual (Mandatos)'; else entrenamiento;">
+        <b class="text-primary font-weight-bold">{{promedioContractual}}</b>
+        </ng-container>
+        <ng-template #entrenamiento>
+        <div *ngIf="category == 'Entrenamiento'; else estandares;">
+          <b class="text-primary font-weight-bold">{{promedioEntrenamiento}}</b>
+        </div>
+        </ng-template>
+        <ng-template #estandares >
+          <b class="text-primary font-weight-bold">{{promedioEstandares}}</b>
+        </ng-template>
+
+      </div>
+    </div>
+  
+  <div class="row " *ngFor="let data of politicasData">
+    <div class="col-4 border border-dark border-left-0 border-bottom-0  movilText" *ngIf="data.matrixDimensionName == category">
+        {{data.matrixTopicName}}
+    </div>
+    <div class="col-6 border border-dark border-left-0 border-bottom-0 movilText" *ngIf="data.matrixDimensionName == category">
+      {{data.matrixQuestionName}}
+    </div>
+    <div *ngIf="data.matrixDimensionName == category" class="col-2 movilText  border border-dark  border-left-0 border-bottom-0 border-right-0" >
+      <span class="text-primary">{{data.score}}</span>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+<!--Escala-->
+<!--
+<div class="row border border-dark border-top-0">
+  <div  class="col-12  ">
+    <div class="row">
+      <div class="col-2" style="background-color: #b9b9b9;"></div>
+      <div class="col-8 w-100"  style="background-color: #b9b9b9;">
+        <p  class="text-center font-weight-bold text-dark">ESCALA</p>
+      </div>
+     <div class="col-2" style="background-color: #b9b9b9;"></div>
+    </div>
+ <div class="row"  *ngFor="let category of escalaCategory">
+  <div class="col-12     ">
+    <div class="row">
+      <div class="col-10 border border-dark border-left-0 border-bottom-0 ">
+        <b  class="font-weight-bold titleMay">{{category}}</b>
+      </div>
+      <div class="col-2  border border-dark border-left-0 border-right-0 border-bottom-0"> 
+
+        <ng-container *ngIf="category == 'Equipos de Proyecto'; else mercados;">
+        <b class="text-primary font-weight-bold">{{promedioEquiposProyecto}}</b>
+        </ng-container>
+        <ng-template #mercados>
+        <div *ngIf="category == 'Mercados'; else organizaciones;">
+          <b class="text-primary font-weight-bold">{{promedioMercados}}</b>
+        </div>
+        </ng-template>
+        <ng-template #organizaciones >
+          <b class="text-primary font-weight-bold">{{promedioOrganizaciones}}</b>
+        </ng-template>
+
+      </div>
+    </div>
+  
+  <div class="row " *ngFor="let data of escalaData">
+    <div class="col-4 border border-dark border-left-0 border-bottom-0  movilText" *ngIf="data.matrixDimensionName == category">
+     {{data.matrixTopicName}}
+    </div>
+    <div class="col-6 border border-dark border-left-0 border-bottom-0 movilText " *ngIf="data.matrixDimensionName == category">
+      {{data.matrixQuestionName}}
+     </div>
+    <div *ngIf="data.matrixDimensionName == category" class="col-2 movilText  border border-dark  border-left-0 border-bottom-0 border-right-0" >
+      <span class="text-primary">{{data.score}}</span>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+-->
+<!--Capacidad BIM-->
+<!--
+<div class="row border border-dark border-top-0">
+  <div  class="col-12  ">
+    <div class="row">
+      <div class="col-2" style="background-color: #b9b9b9;"></div>
+      <div class="col-8 w-100"  style="background-color: #b9b9b9;">
+        <p  class="text-center font-weight-bold text-dark">CAPACIDAD BIM</p>
+      </div>
+     <div class="col-2" style="background-color: #b9b9b9;"></div>
+    </div>
+ <div class="row"  *ngFor="let category of capacidadBIMCategory">
+  <div class="col-12     ">
+    <div class="row">
+      <div class="col-10 border border-dark border-left-0 border-bottom-0 ">
+        <b  class="font-weight-bold titleMay">{{category}}</b>
+      </div>
+      <div class="col-2  border border-dark border-left-0 border-right-0 border-bottom-0"> 
+
+        <ng-container *ngIf="category == 'Colaboración basada en el Modelo'; else ibr;">
+        <b class="text-primary font-weight-bold">{{promedioCBM}}</b>
+        </ng-container>
+        <ng-template #ibr>
+        <div *ngIf="category == 'Integración basada en la red'; else mbo;">
+          <b class="text-primary font-weight-bold">{{promedioIBR}}</b>
+        </div>
+        </ng-template>
+        <ng-template #mbo >
+          <b class="text-primary font-weight-bold">{{promedioMBO}}</b>
+        </ng-template>
+
+      </div>
+    </div>
+  
+  <div class="row " *ngFor="let data of capacidadBIMData">
+    <div class="col-4 border border-dark border-left-0 border-bottom-0 movilText " *ngIf="data.matrixDimensionName == category">
+     {{data.matrixTopicName}}
+    </div>
+    <div class="col-6 border border-dark border-left-0 border-bottom-0 movilText " *ngIf="data.matrixDimensionName == category">
+      {{data.matrixQuestionName}}
+     </div>
+    <div *ngIf="data.matrixDimensionName == category" class="col-2 movilText border border-dark  border-left-0 border-bottom-0 border-right-0" >
+      <span class="text-primary">{{data.score}}</span>
+    </div>
+  </div>
+  </div>
+</div>
+</div>
+</div>
+-->

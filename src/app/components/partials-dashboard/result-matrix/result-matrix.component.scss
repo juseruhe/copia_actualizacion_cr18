@@ -1,0 +1,40 @@
+:host::ng-deep {
+  .card {
+    border-radius: 5px;
+    table {
+      border-radius: 5px;
+      thead tr th {
+        font-weight: bold;
+      }
+    
+      tbody {
+        td {
+          font-weight: normal;
+        }
+  
+        tr:nth-of-type(odd) {
+          background-color: #F5F6F9 !important;
+        }
+      }
+  
+      strong {
+        font-weight: bold;
+      }
+    }
+    h4 {
+      font-weight: bold !important;
+    }
+  }
+}
+
+.titleMay{
+  text-transform: uppercase;
+}
+
+@media (max-width: 767px){
+  .movilText{
+    font-size: 10px;
+  }
+}
+
+

@@ -1,0 +1,38 @@
+<div class="row">
+  <div class="col-12 mb-2" *ngIf="loader">
+    <ngb-progressbar type="secondary" [value]="100" [striped]="true" height="10px" [animated]="false"></ngb-progressbar>
+  </div>
+  <div class="col-12 text-right">
+    <i (click)="donwload()" class="fas fa-file-alt fa-2x pointer text-secondary mr-3"></i>
+  </div>
+</div>
+<div class="row">
+  <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+    <div class="row">
+      <div class="col-12"><h4>Madurez</h4></div>
+      <div class="col-12">
+        <ng2-smart-table [settings]="settings" [source]="data?.maturityList"></ng2-smart-table>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+    <div class="row">
+      <div class="col-12"><h4>Capacidad</h4></div>
+      <div class="col-12">
+        <ng2-smart-table [settings]="settings" [source]="data?.capacityList"></ng2-smart-table>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-md-6 col-lg-6 col-xl-4">
+    <div class="row">
+      <div class="col-12"><h4>Escala</h4></div>
+      <div class="col-12">
+        <ng2-smart-table [settings]="settings" [source]="data?.scaleList"></ng2-smart-table>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+

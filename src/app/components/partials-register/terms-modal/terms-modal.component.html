@@ -1,0 +1,47 @@
+<!-- Start client data bonding modal -->
+<app-modal-layout #modalLayout [title]="title">
+  <!-- Start body reference -->
+  <ng-template #bodyContent>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <p>          
+            <strong> Habeas data: </strong> Manifiesto que conozco la política de tratamiento de bases de datos
+            personales de CAMACOL y que al momento de diligenciar la presente matriz 
+            AUTORIZO de manera libre, expresa, inequívoca a CAMACOL y a los terceros a
+            quien el autorizado le suministre los datos, para que lleve a cabo el tratamiento de
+            mis datos personales, realice la recolección, almacenamiento, uso, actualización,
+            rectificación, conservación, circulación, supresión, y en general, administre  mis
+            datos personales, información que sea suministrada en calidad de participante; los
+            anteriores con fines de contacto y aquellos que considere de interés CAMACOL
+            y/o remisión de información de interés con la presente participación y demás
+             finalidades comerciales directamente relacionadas con el objeto social de
+            CAMACOL, de conformidad con la Constitución Política de Colombia, la Ley
+            Estatutaria 1581 del 2012 y su Decreto Reglamentario 1377 del 2013 y/o aquellas
+            que la adicionen, modifiquen y/o aclaren. Para consultas, sugerencias, peticiones,
+            quejas y reclamos se podrá dirigir al siguiente correo
+            electrónico <a href="mailto:datospersonales@camacol.org.co">datospersonales@camacol.org.co</a> .
+          </p>
+          <br>
+          <p>
+            <strong> Licencia de uso: </strong> La Ruta BIM está bajo licencia Creative commons 3.0 -  El objetivo de la Ruta BIM es que sea diligenciada como una autoevaluación, investigación, educación y actividades no comerciales. Ello indica que Camacol no se encuentra efectuando ninguna evaluación a los participantes por medio de esta herramienta.
+        </p>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <!-- End body reference -->
+
+  <!-- Start footer reference -->
+  <ng-template #footerContent>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12 text-center">
+          <button type="button" class="btn waves-effect waves-light btn-rounded btn-primary" (click)="accept()" >Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <!-- End footer reference -->
+</app-modal-layout>
+<!-- End client data bonding modal -->

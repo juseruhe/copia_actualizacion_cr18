@@ -1,0 +1,45 @@
+#publicHeader {
+  position: relative;
+  z-index: 2;
+}
+
+.account {
+  &::after {
+    display: none;
+  }
+  .profile-avatar {
+    width: 31px;
+    height: 31px;
+    text-align: center;
+    padding-top: 7px;
+    display: inherit;
+    span {
+      display: block;
+    }
+  }
+  
+  .profile-name {
+    font-weight: bold;
+    color: #3e5569;
+  }
+}
+
+header {
+  min-height: 80px;
+  .logos {
+    display: inline-block;
+    width: 100px;
+    height: 50px;
+    img {
+      width: 100%;
+    }
+  }
+}
+
+
+@media (max-width: 576px) {
+  .logos {
+    width: 70px !important;
+    height: 35px !important;
+  }
+}

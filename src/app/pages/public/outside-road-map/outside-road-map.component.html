@@ -1,0 +1,35 @@
+<div class="row border-bottom">
+  <div class="col-12">
+    <app-public-header></app-public-header>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <app-breadcrumb [side]="'left'" [title]="false"></app-breadcrumb>
+  </div>
+</div>
+
+<div class="container py-5">
+  <div class="row mb-5">
+    <div class="col-auto">
+      <button class="btn btn-circle btn-primary" [routerLink]="['/outside-bim-presentation']"><i
+          class="fa fa-angle-left"></i></button>
+    </div>
+    <div class="col-auto">
+      <button [routerLink]="['/outside-instructive']" class="btn btn-circle btn-primary"><i class="fa fa-angle-right"></i></button>
+    </div>
+  </div>
+
+  <router-outlet></router-outlet>
+
+  <div class="row">
+    <div class="col-12">
+      <hr>
+    </div>
+    <div class="col-12 text-center mt-3">
+      <button [routerLink]="['/outside-bim-presentation']" class="btn btn-outline-primary btn-rounded mx-3">Volver</button>
+      <button [routerLink]="['/outside-instructive']" class="btn btn-primary btn-rounded">Continuar</button>
+    </div>
+  </div>
+</div>

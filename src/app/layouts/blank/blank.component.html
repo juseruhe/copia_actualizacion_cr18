@@ -1,0 +1,15 @@
+<!-- ============================================================== -->
+<!-- Only router without any element -->
+<!-- ============================================================== -->
+<div class="container-fluid" (window:resize)="onResize($event)">
+  <div #wrapperElement class="row" [ngStyle]="{'min-height': minHeight}">
+    <div class="col-12">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+  <div #bottomElement class="row">
+    <div class="col-12">
+      <app-footer></app-footer>
+    </div>
+  </div>
+</div>

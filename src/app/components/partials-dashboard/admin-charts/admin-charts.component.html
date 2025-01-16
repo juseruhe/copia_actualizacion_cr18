@@ -1,0 +1,40 @@
+<!--
+<div class="row">
+  <div class="col-12 col-sm-6 col-md-4">
+    <canvas baseChart [datasets]="maturityChartData" [options]="radarChartOptions" [labels]="maturityChartLabels"
+      [chartType]="radarChartType">
+    </canvas>
+  </div>
+  <div class="col-12 col-sm-6 col-md-4">
+    <canvas baseChart [datasets]="capacityChartData" [labels]="capacityChartLabels" [chartType]="capacityChartType">
+    </canvas>
+  </div>
+  <div class="col-12 col-sm-6 col-md-4">
+    <canvas baseChart [datasets]="scaleChartData" [labels]="scaleChartLabels" [chartType]="scaleChartType" [options]="scaleChartOptions">
+    </canvas>
+  </div>
+</div>
+-->
+
+<div class="tab-container">
+  <div class="tab-header">
+    <button class="btn btn-primary" (click)="activeTab = 'tab1'" [class.active]="activeTab === 'tab1'">Madurez</button>
+    <button class="btn btn-primary" (click)="activeTab = 'tab2'" [class.active]="activeTab === 'tab2'">Capacidad</button>
+    <button class="btn btn-primary" (click)="activeTab = 'tab3'" [class.active]="activeTab === 'tab3'">Escala</button>
+  </div>
+  <div class="tab-content">
+    <div *ngIf="activeTab === 'tab1'">
+      <canvas baseChart [datasets]="maturityChartData" [options]="radarChartOptions" [labels]="maturityChartLabels"
+      [chartType]="radarChartType">
+    </canvas>
+    </div>
+    <div *ngIf="activeTab === 'tab2'">
+      <canvas baseChart [datasets]="capacityChartData" [labels]="capacityChartLabels" [chartType]="capacityChartType">
+      </canvas>
+    </div>
+    <div *ngIf="activeTab === 'tab3'">
+      <canvas baseChart [datasets]="scaleChartData" [labels]="scaleChartLabels" [chartType]="scaleChartType" [options]="scaleChartOptions">
+      </canvas>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,69 @@
+#content-header{
+  position: fixed;
+  left: 0;
+  top: 0;
+  z-index: 2;
+}
+
+p, label {
+  font-weight: normal;
+  font-size: 16px;
+}
+
+h3 {
+  font-size: 21px;
+  font-weight: bold;
+  line-height: 31px;
+}
+
+.cover-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  .content-text {
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%, -50%);
+  }
+  .bg-a {
+    h1 {
+      font-size: 48px;
+      font-weight: normal;
+    }
+
+    h2 {
+      font-size: 32px;
+      font-weight: 300;
+    }
+    .content-text {
+      left: 34%;
+    }
+  }
+
+  .bg-b {
+    h3 {
+      font-size: 21px;
+      font-weight: normal;
+      line-height: 31px;
+    }
+
+    .content-text {
+      left: 95%;
+      .line {
+        width: 72px;
+        height: 4px;
+        background: var(--white);
+        margin-bottom: 16px;
+      }
+    }
+  }
+}
+
+.auth-box {
+  position: relative;
+  z-index: 2;
+}
+

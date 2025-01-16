@@ -1,0 +1,27 @@
+<div class="row">
+  <div class="col-12">
+    <!-- Start table-->
+    <div class="row">
+      <div class="col-12 mb-3" *ngIf="loader">
+        <ngb-progressbar type="primary" [value]="100" [striped]="true" height="10px" [animated]="false">
+        </ngb-progressbar>
+      </div>
+      <div class="col-12 mb-3" *ngIf="canCrud">
+        <button class="btn btn-outline-secondary btn-rounded" tooltip="Editar" (click)="create()"><span
+            class="fa fa-plus"></span></button>
+      </div>
+      <div class="col-12">
+        <div class="card">
+          <div class="row py-1">
+            <div class="col-12 text-right">
+              <i (click)="donwload()" class="fas fa-file-alt fa-2x pointer text-secondary mr-3"></i>
+            </div>
+          </div>
+          <ng2-smart-table [settings]="settings" [source]="source"></ng2-smart-table>
+        </div>
+      </div>
+    </div>
+    <!-- End table-->
+
+  </div>
+</div>

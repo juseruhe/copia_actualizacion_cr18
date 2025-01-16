@@ -1,0 +1,52 @@
+<div class="row" *ngIf="loader">
+  <div class="col-12 mb-2">
+    <ngb-progressbar type="secondary" [value]="100" [striped]="true" height="10px" [animated]="true"></ngb-progressbar>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-auto">
+    <div class="card">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="matrixPublishId">Periodo</label>
+              <select name="" class="form-control" [(ngModel)]="matrixPublishId">
+                <option *ngFor="let item of matrixPublishList2;" [value]="item.id">{{ item.name }}</option>
+              </select>
+            </div>
+            <div class="row">
+              <div class="col-auto mb-2">
+                <button class="btn btn-secondary" [disabled]="loader" (click)="dashboardDownload()">Métricas de
+                  Matriz</button>
+              </div>
+              <div class="col-auto mb-2">
+                <button class="btn btn-secondary" [disabled]="loader" (click)="companyDownload()">Empresas</button>
+              </div>
+              <div class="col-auto mb-2">
+                <button class="btn btn-secondary" [disabled]="loader" (click)="personDonwload()">Personas</button>
+              </div>
+            </div>
+          </div>
+        </div> 
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class="card w-100">
+      <div class="card-body">
+        <div class="row">
+          <div class="col-auto mb-2">
+            <button class="btn btn-secondary" [disabled]="loader" (click)="userDownload()">Usuarios de
+              administracion</button>
+          </div>
+          <div class="col-auto mb-2">
+            <button class="btn btn-secondary" [disabled]="loader" (click)="resultByPeriodDonwload()">Resultados por
+              periodo</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

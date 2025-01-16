@@ -1,0 +1,41 @@
+<div [formGroup]="controlContainer.control" class="row border-top border-secondary" *ngIf="matrixDimensionList">
+  <div class="col-12" formArrayName="matrixDimensionList">
+    <div class="row">
+      <div class="col-auto p-0">
+        <ul class="list-group list-group-flush">
+          <ng-container *ngFor="let dimension of matrixDimensionList; let idx = index;">
+            <li [formGroupName]="idx" class="dimension list-group-item pointer" [ngClass]="{'active': dimension?.show }" (click)="show(dimension)"><i class="fa fa-check-circle mr-2" appCheckMatrixStep></i>{{ dimension?.name }}</li>
+          </ng-container>
+        </ul>
+      </div>
+      <div class="col">
+        <div class="row border border-top-0 border-secondary p-4">      
+          <ng-container *ngFor="let dimension of matrixDimensionList; let idx = index;">
+            <ng-container *ngIf="dimension.type === 2">
+              <div [hidden]="selected?.id !== dimension?.id" [formGroupName]="idx" class="countProject col-12 col-sm-12 col-md-6">
+                <div class="form-group">
+                  <label for="countProject">No. de Proyectos <span class="text-danger">*</span></label>
+                  <input type="number" class="form-control" formControlName="countProject" (change)="updateCountProject(dimension, idx)">
+                </div>
+              </div>
+            </ng-container>
+            <div class="col-12 mt-3" [hidden]="selected?.id !== dimension?.id">
+              <div class="col-12">
+                <h5>Seleccione un item según el criterio de evaluación:</h5>
+              </div>
+              <app-topics [formGroupName]="idx" [index]="idx" [first]="first && idx === 0" [last]="last && idx === (matrixDimensionList?.length - 1)" [length]="matrixDimensionList.length" [matrixTopicList]="dimension.matrixTopicList" (nextEvent)="nextResponse($event)" (backEvent)="backResponse($event)"></app-topics>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row" *ngIf="!matrixDimensionList?.length">
+  <div class="col-12">
+    <div class="alert alert-info" role="alert">
+      Sin dimensiones encontradas.
+    </div>
+  </div>
+</div>

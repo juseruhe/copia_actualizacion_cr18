@@ -1,0 +1,78 @@
+<!-- Start user dashboard -->
+
+
+<div class="row">
+    <div class="col-8">
+        <h4 class="ml-4 page-title text-center text-secondary my-4">Evaluación de ruta BIM</h4>  
+    </div>
+    <div class="col-2">
+        <div class="my-4">
+        <button (click)="donwload()" class="downloadButton " style="background-color: #f91031; color: #ffffff; border:solid #f91031; position: relative; top: 0px;">
+            Descargar aquí el informe de resultados
+           </button>
+        </div>
+    </div>
+    <div class="col-2">
+        <button (click)="close()"  class="btn btn-danger x close my-2"><i class="text-dark fa fa-times fa-2x"></i></button>
+    </div>
+
+    <div class="row col-12" *ngIf="downloadStatus">
+    <div class="col-12 mb-3" *ngIf="loader">
+        <ngb-progressbar type="primary" [value]="(prepare ? 100 : 50)" [striped]="true" height="10px" [animated]="false">
+          {{ prepare ? 'Descargando documento...' : 'Procesando las gráficas...' }}
+        </ngb-progressbar>
+      </div>
+    </div>
+</div>
+
+ <div class="modal-body">
+    <div *ngIf="!isAdmin" class="row">
+        <div class="col-12">
+            <div class="row justify-content-center">
+               <!--
+                <div class="col-12 col-md-4">
+                    <app-result-category-matrix [resultCategory]="resultCategory"></app-result-category-matrix>
+                </div>
+            -->
+            <div class="col-12 col-md-12">
+                
+                <app-result-category-matrix [resultCategory]="resultCategory"></app-result-category-matrix>
+            </div>
+                <div class="col-12 col-md-12">
+                    <app-result-matrix-chart (dataEvent)="resultMatrixChartEvent($event)"></app-result-matrix-chart>
+                </div>
+        </div>
+        <div class="col-12">
+            <app-result-matrix></app-result-matrix>
+        </div>
+    </div>
+    </div>
+    <!-- End user dashboard -->
+    
+    <!-- Start admin dashboard -->
+    <div *ngIf="isAdmin" class="row">
+        <div class="col-12">
+            <app-admin-cards [data]="globalCards"></app-admin-cards>
+        </div>
+        <div class="col-12 mt-3">
+            <app-admin-filter [matrixPublishList]="matrixPublishList" [loader]="loader" (filterEvent)="change($event)"></app-admin-filter>    
+        </div>
+        <ng-container *ngIf="!loader">
+            <div class="col-12">
+                <app-admin-cards [data]="cards"></app-admin-cards>
+            </div>
+            <div class="col-12 mt-3">
+                <app-admin-charts [data]="data.charts"></app-admin-charts>
+            </div>
+            <div class="col-12 mt-3">
+                <hr>
+            </div>
+            <div class="col-12 mt-3">
+                <app-admin-result [filters]="filters" [data]="data.result"></app-admin-result>
+            </div>
+        </ng-container>
+    </div>
+ </div>
+
+    <!-- End admin dashboard -->
+    

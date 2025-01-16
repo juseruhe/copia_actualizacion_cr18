@@ -1,0 +1,368 @@
+<div id="content-header" class="w-100">
+  <app-public-header></app-public-header>
+  <div class="row">
+    <div class="col-12">
+      <app-breadcrumb [side]="'left'" [title]="false"></app-breadcrumb>
+    </div>
+  </div>
+</div>
+
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center h-100">
+  <div class="cover-bg">
+    <div class="row h-100">
+      <div class="col bg-a bg-white">
+        <div class="content-text d-none d-lg-block">
+           <!-- <h1>RUTA <br> <strong>BIM</strong></h1>  -->
+           <img src="./assets/images/landing/Logo RUTA BIM3 (1).png" style="width:40%;" alt="" > 
+          <h2 class="my-3">¡Una herramienta <br> de gestión <br> empresarial!</h2>
+          <h3>Pensada para la autoevaluación <br> de las organizaciones de <br> la cadena de valor de la construcción.</h3>
+          <div class="line"></div>
+        </div>
+      </div>
+      <div class="col bg-b bg-primary d-none d-lg-flex"></div>
+    </div>
+  </div>
+  <div class="auth-box my-5">
+    <div id="registerForm" class="col-12 mt-5 px-5">
+      <div class="row logo">
+        <div class="col-12">
+          <h3 class="font-medium m-b-20 text-left"><strong>Registro</strong></h3>
+        </div>
+      </div>
+
+      <div class="row mt-3 mb-2">
+        <div class="col-12 col-sm-auto">
+          <div class="row">
+            <div class="content-tab col-12 col-sm-auto">
+              <div class="tab" (click)="showOtherForm(false)" [ngClass]="{'active': !otherForm }">Personal natural</div>
+            </div>
+            <div class="content-tab col-12 col-sm-auto">
+              <div class="tab" (click)="showOtherForm(true)" [ngClass]="{'active': otherForm }">Empresas</div>
+            </div>
+          </div>
+          <div class="row">
+            <div class="content-line col">
+              <div class="line-tab"></div> 
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Start person -->
+      <div class="row" [hidden]="otherForm">
+        <div class="col-12">
+          <form [formGroup]="personForm" (ngSubmit)="personRegister()" class="form-horizontal m-t-20" id="loginform">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Nombre y apellidos</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="completeName">
+                  <app-control-message-input [control]="personForm.controls.completeName"
+                    [configMessages]="controlField?.messages?.person?.completeName"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Correo eléctronico</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="email">
+                  <app-control-message-input [control]="personForm.controls.email"
+                    [configMessages]="controlField?.messages?.person?.email"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Tipo identificación</label>
+                  <select class="form-control form-control-lg" formControlName="documentType" (change)="changeValidatorsNIT($event)" >
+                    <option *ngFor="let item of documentTypeList;" [value]="item.id">{{item.name}}</option>
+                  </select>
+                  <app-control-message-input [control]="personForm.controls.documentType"
+                    [configMessages]="controlField?.messages?.person?.documentType"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6" *ngIf="personForm.get('documentType').value!='NIT'">
+                <div class="form-group">
+                  <label for="">Número identificación</label>
+                  <input type="number" class="form-control form-control-lg" formControlName="document" 
+                  maxlength="12" (input)="limiteCaracteres($event,12)"  >
+                  <app-control-message-input [control]="personForm.controls.document"
+                    [configMessages]="controlField?.messages?.person?.document"></app-control-message-input>
+                </div>
+              </div>
+              <!-- En caso del Tipo de Documento sea NIT-->
+              <div class="col-12 col-sm-4" *ngIf="personForm.get('documentType').value=='NIT'">
+                <div class="form-group">
+                  <label for="">Número identificación</label>
+                  <input type="number" class="form-control form-control-lg" formControlName="document"  
+                  maxlength="9" (input)="limiteCaracteres($event,9)"  >
+                  <app-control-message-input [control]="personForm.controls.document"
+                    [configMessages]="controlField?.messages?.person?.document"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-2" *ngIf="personForm.get('documentType').value=='NIT'">
+                <div class="form-group">
+                  <label for="">#</label>
+                  <input type="number" class="form-control form-control-lg" formControlName="document2"
+                  maxlength="1" min="0" (input)="limiteCaracteres($event,1)"  >
+                  <app-control-message-input [control]="personForm.controls.document2"
+                    [configMessages]="controlField?.messages?.person?.document2"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Nombre comercial</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="commercialName">
+                  <app-control-message-input [control]="personForm.controls.commercialName"
+                    [configMessages]="controlField?.messages?.person?.commercialName"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Ciudad</label>
+                  <select class="form-control form-control-lg" formControlName="city">
+                    <option *ngFor="let item of cityList;" [value]="item.id">{{item.name}}</option>
+                  </select>
+                  <app-control-message-input [control]="personForm.controls.city"
+                    [configMessages]="controlField?.messages?.person?.city"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Teléfono</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="phone">
+                  <app-control-message-input [control]="personForm.controls.phone"
+                    [configMessages]="controlField?.messages?.person?.phone"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="">Contraseña</label>
+                <div class="input-group">
+                  <input [type]="showPassword ? 'text' : 'password'" class="form-control form-control-lg"
+                    formControlName="password">
+                  <div class="input-group-append pointer" (click)="changeShowPassword()">
+                    <span class="input-group-text"><i class="fa fa-eye"
+                        [ngClass]="{'fa-eye': !showPassword, 'fa-eye-slash': showPassword}"></i></span>
+                  </div>
+                </div>
+                <app-control-message-input [control]="personForm.controls.password" [configMessages]="controlField?.messages?.person?.password"></app-control-message-input>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input formControlName="belongsBim" type="checkbox" class="custom-control-input" id="personBelongs">
+                    <label class="custom-control-label" for="personBelongs">¿Pertenece a BIM Forum?</label>
+                    <app-control-message-input [control]="personForm.controls.belongsBim"
+                      [configMessages]="controlField?.messages?.person?.belongsBim"></app-control-message-input>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input  formControlName="terms" type="checkbox" class="custom-control-input" id="personTerms">
+                    <label for="personTerms" class="custom-control-label mr-1" >Aceptación</label>
+                    <strong>
+                      <a class="terms pointer" (click)="openTerms()">habeas data y política de tratamiento de datos </a>
+                    </strong>
+                    <app-control-message-input [control]="personForm.controls.terms"
+                      [configMessages]="controlField?.messages?.person?.terms"></app-control-message-input>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 mb-3" *ngIf="!otherForm">
+                <div class="row justify-content-center">
+                  <div class="col-auto">
+                    <ngx-recaptcha2 #captchaElem1
+                      [siteKey]="reCaptchaSiteKey"
+                      formControlName="recaptcha">
+                    </ngx-recaptcha2>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12">
+                <div class="form-group text-center">
+                  <div class="col-xs-12 p-b-20 text-center">
+                    <button type="submit" [disabled]="!personForm.valid || loader"
+                      class="btn waves-effect waves-light btn-rounded btn-primary">Registrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- End person -->
+
+      <!-- Start company -->
+      <div class="row" [hidden]="!otherForm">
+        <div class="col-12">
+          <form [formGroup]="companyForm" (ngSubmit)="companyRegister()" class="form-horizontal m-t-20">
+            <div class="row">
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Nombre de la empresa</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="companyName">
+                  <app-control-message-input [control]="companyForm.controls.companyName"
+                    [configMessages]="controlField?.messages?.company?.companyName"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-4">
+                <div class="form-group">
+                  <label for="">NIT de la empresa</label>
+                  <input type="number" class="form-control form-control-lg" formControlName="nit" 
+                  (input)="limiteCaracteres($event,9)" maxlength="9" >
+                  <app-control-message-input [control]="companyForm.controls.nit" 
+                    [configMessages]="controlField?.messages?.company?.nit"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-2">
+                <div class="form-group">
+                  <label for="">#</label>
+                  <input type="number" class="form-control form-control-lg" formControlName="nit2"
+                  (input)="limiteCaracteres($event,1)" maxlength="1">
+                  <app-control-message-input [control]="companyForm.controls.nit2"
+                    [configMessages]="controlField?.messages?.company?.nit2" ></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Nombres y apellidos responsable BIM</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="inChargeName">
+                  <app-control-message-input [control]="companyForm.controls.inChargeName"
+                    [configMessages]="controlField?.messages?.company?.inChargeName"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Cargo dentro de la empresa</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="charge">
+                  <app-control-message-input [control]="companyForm.controls.charge"
+                    [configMessages]="controlField?.messages?.company?.charge"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Correo electrónico corporativo</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="email">
+                  <app-control-message-input [control]="companyForm.controls.email"
+                    [configMessages]="controlField?.messages?.company?.email"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Teléfono contacto</label>
+                  <input type="text" class="form-control form-control-lg" formControlName="phone">
+                  <app-control-message-input [control]="companyForm.controls.phone"
+                    [configMessages]="controlField?.messages?.company?.phone"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <label for="">Contraseña</label>
+                <div class="input-group">
+                  <input [type]="showPassword ? 'text' : 'password'" class="form-control form-control-lg"
+                    formControlName="password">
+                  <div class="input-group-append pointer" (click)="changeShowPassword()">
+                    <span class="input-group-text"><i class="fa fa-eye"
+                        [ngClass]="{'fa-eye': !showPassword, 'fa-eye-slash': showPassword}"></i></span>
+                  </div>
+                </div>
+                <app-control-message-input [control]="companyForm.controls.password" [configMessages]="controlField?.messages?.company?.password"></app-control-message-input>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Categoría de empresas</label>
+                  <select class="form-control form-control-lg" formControlName="category">
+                    <option *ngFor="let item of categoryList;" [value]="item.id">{{item.name}}</option>
+                  </select>
+                  <app-control-message-input [control]="companyForm.controls.category"
+                    [configMessages]="controlField?.messages?.company?.category"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Tamaño de la empresa</label>
+                  <select class="form-control form-control-lg" formControlName="sizeCompany">
+                    <option *ngFor="let item of sizeCompanyList;" [value]="item">{{item}}</option>
+                  </select>
+                  <app-control-message-input [control]="companyForm.controls.sizeCompany"
+                    [configMessages]="controlField?.messages?.company?.sizeCompany"></app-control-message-input>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <label for="">Ciudad</label>
+                  <select class="form-control form-control-lg" formControlName="city">
+                    <option *ngFor="let item of cityList;" [value]="item.id">{{item.name}}</option>
+                  </select>
+                  <app-control-message-input [control]="companyForm.controls.city"
+                    [configMessages]="controlField?.messages?.company?.city"></app-control-message-input>
+                </div>
+              </div>
+
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input formControlName="allyCamacol" type="checkbox" class="custom-control-input" id="allyCamacol">
+                    <label class="custom-control-label" for="allyCamacol">¿Es afiliado a Camacol?</label>
+                    <app-control-message-input [control]="companyForm.controls.allyCamacol"
+                      [configMessages]="controlField?.messages?.company?.allyCamacol"></app-control-message-input>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input formControlName="belongsBim" type="checkbox" class="custom-control-input" id="companyBelongsBim">
+                    <label class="custom-control-label" for="companyBelongsBim">¿Pertenece a BIM Forum?</label>
+                    <app-control-message-input [control]="companyForm.controls.belongsBim"
+                      [configMessages]="controlField?.messages?.company?.belongsBim"></app-control-message-input>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 col-sm-6">
+                <div class="form-group">
+                  <div class="custom-control custom-checkbox">
+                    <input formControlName="terms" type="checkbox" class="custom-control-input" id="companyTerms">
+                    <label for="companyTerms" class="custom-control-label mr-1" >Aceptación</label>
+                    <strong>
+                      <a class="terms pointer" (click)="openTerms()">habeas data y política de tratamiento de datos </a>
+                    </strong>
+                    <app-control-message-input [control]="companyForm.controls.terms"
+                      [configMessages]="controlField?.messages?.company?.terms"></app-control-message-input>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12" *ngIf="otherForm">
+                <div class="row justify-content-center">
+                  <div class="col-auto">
+                    <ngx-recaptcha2 #captchaElem2
+                      [siteKey]="reCaptchaSiteKey"
+                      formControlName="recaptcha">
+                    </ngx-recaptcha2>
+                  </div>
+                </div>
+              </div>
+              <div class="col-12 mt-3">
+                <div class="form-group text-center">
+                  <div class="col-xs-12 p-b-20 text-center">
+                    <button type="submit" [disabled]="!companyForm.valid || loader"
+                      class="btn waves-effect waves-light btn-rounded btn-primary">Registrar</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <!-- End company -->
+
+      <div class="row mb-3">
+        <div class="col-12">
+          <p class="col-sm-12 text-center">
+            ¿Tienes cuenta? <a [routerLink]="['/login']" class="text-info m-l-5"><span>Inicia sesión</span></a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

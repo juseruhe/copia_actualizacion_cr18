@@ -1,0 +1,9 @@
+<app-matrix-manage [keyModule]="keyModule" [title]="title">
+  <ng-template #elementContent let-element>
+    <div class="row pt-3">
+      <div class="col-12">
+        <p> <strong>Puntaje:</strong> {{ element?.score }}</p>
+      </div>
+    </div>
+  </ng-template>
+</app-matrix-manage>

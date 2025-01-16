@@ -1,0 +1,13 @@
+:host::ng-deep {
+
+  tbody {
+    td {
+      font-weight: normal;
+    }
+
+    tr:nth-of-type(odd) {
+      background-color: #F5F6F9 !important;
+    }
+  }
+
+}

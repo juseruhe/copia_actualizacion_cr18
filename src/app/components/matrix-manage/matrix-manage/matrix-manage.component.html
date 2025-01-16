@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-12">
+    <!-- Start description content reference -->
+    <ng-template [ngIf]="descriptionContentTmpl" [ngIfElse]="refContentBodyDefault">
+      <ng-container *ngTemplateOutlet="descriptionContentTmpl, context: { $implicit: parent }"></ng-container>
+    </ng-template>
+    <!-- End description content reference -->
+  
+    <!-- Start default description content -->
+    <ng-template #refContentBodyDefault>
+      <div class="row">
+        <div class="col-12">
+          <h1>{{ title }}</h1>
+        </div>
+        <div class="col-12">
+          <p>{{ description }}</p>
+        </div>
+      </div>
+    </ng-template>
+    <!-- End default description content -->
+  </div>
+
+  <div class="col-12 mt-3" *ngIf="canCrud">
+    <button type="button" class="btn waves-effect waves-light btn-rounded btn-secondary mr-3" (click)="create()">Crear {{ crudConfig?.name | lowercase }}</button>
+  </div>
+
+  <div class="col-12 mt-5">
+    <div class="row">
+      <div class="col-12">
+        <p>Seleccione un (1) {{ crudConfig?.name | lowercase }}</p>
+      </div>
+      <div class="col-12">
+        <div class="row">
+          <div class="col-12 mb-3" *ngFor="let element of recordList; let idx = index;">
+            <nav class="matrix-element navbar navbar-light pointer py-1" (click)="select(element)" [ngClass]="{'active': selected?.id === element.id}">
+              <h5>{{element.name}}</h5>
+              <form class="form-inline">
+                <button *ngIf="elementContentTmpl" type="button" [attr.aria-expanded]="!element?.show" aria-controls="matrix-collapse-{{idx}}" (click)="show(element)" class="btn btn-light btn-circle"><i class="fa fa-angle-down text-info"></i> </button>
+                <ng-container *ngIf="canCrud">
+                  <button type="button" class="btn btn-light btn-circle" (click)="edit(element)"><i class="fa fa-pencil-alt text-info"></i> </button>
+                  <button type="button" class="btn btn-light btn-circle" (click)="delete(element)"><i class="fa fa-trash-alt text-info"></i> </button>
+                </ng-container>
+              </form>
+            </nav>
+            <ng-template [ngIf]="elementContentTmpl">
+              <nav id="matrix-collapse-{{idx}}" class="matrix-collapse navbar navbar-dark py-0 rounded-bottom" [ngbCollapse]="element?.show">
+                <ng-container *ngTemplateOutlet="elementContentTmpl, context: { $implicit: element }"></ng-container>
+              </nav>
+            </ng-template>
+          </div>
+
+          <div class="col-12" *ngIf="recordList.length === 0">
+            <div class="alert alert-info" role="alert">
+              Sin registros encontrados.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-12 mt-3 text-right">
+    <button type="button" *ngIf="parent?.id" (click)="back()" class="btn waves-effect waves-light btn-rounded btn-light mr-3">Anterior</button>
+    <button type="button" *ngIf="redirectionConfig?.nextPath" (click)="next()" [disabled]="!selected?.id" class="btn waves-effect waves-light btn-rounded btn-secondary">Siguiente</button>
+  </div>
+</div>

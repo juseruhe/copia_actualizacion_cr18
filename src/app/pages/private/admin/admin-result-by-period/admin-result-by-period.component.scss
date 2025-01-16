@@ -1,0 +1,20 @@
+.content-table {
+  max-height: 500px;
+}
+
+:host::ng-deep {
+  .ng2-smart-th {
+    min-width: 100px;
+    &.sm {
+      min-width: 150px;
+    }
+
+    &.md {
+      min-width: 200px;
+    }
+
+    &.lg {
+      min-width: 250px;
+    }
+  }
+}

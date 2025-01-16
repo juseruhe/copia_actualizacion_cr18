@@ -1,0 +1,22 @@
+button {
+  .fa {
+    vertical-align: text-top;
+    &.fa-edit {
+      color: var(--secondary);
+    }
+  
+    &.fa-trash {
+      color: var(--danger);
+    }
+
+    &.fa-home {
+      color: var(--info);
+    }
+  
+  }
+  &:hover {
+    .fa {
+      color: var(--white) !important;
+    }
+  }
+}

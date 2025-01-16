@@ -1,0 +1,12 @@
+<app-matrix-manage [keyModule]="keyModule" [grandfatherKey]="grandfatherKey">
+  <ng-template #descriptionContent let-parent>
+    <div class="row">
+      <div class="col-12">
+        <h2>{{ parent?.name }}</h2>
+      </div>
+      <div class="col-12">
+        <p><strong>Puntaje:</strong> {{ parent?.score }}</p>
+      </div>
+    </div>
+  </ng-template>
+</app-matrix-manage>

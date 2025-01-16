@@ -1,0 +1,36 @@
+.dimension {
+  min-width: 200px;
+  max-width: 200px;
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  border-color: var(--secondary);
+  color: var(--secondary);
+  &.active {
+    background-color: var(--secondary);
+    color: var(--white);
+  }
+  .fa {
+    color: var(--gray);
+    &.valid {
+      color: var(--success);
+    }
+  }
+}
+
+h5 {
+  font-weight: normal;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.countProject {
+  input {
+    &.ng-invalid {
+      border-color: var(--danger);
+    }
+    &.ng-valid {
+      border-color: var(--success);
+    }
+  }
+}

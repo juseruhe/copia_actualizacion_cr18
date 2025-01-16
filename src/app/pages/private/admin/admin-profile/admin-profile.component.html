@@ -1,0 +1,154 @@
+<!-- Start admin profile -->
+<div class="row" *ngIf="adminProfileForm">
+  <div class="col-12">
+    <form [formGroup]="adminProfileForm" (ngSubmit)="adminProfileUpdate()" class="form-horizontal m-t-20" id="loginform">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Nombre y apellidos</label>
+            <input type="text" class="form-control form-control-lg" formControlName="completeName">
+            <app-control-message-input [control]="adminProfileForm.controls.completeName"
+              [configMessages]="controlField?.messages?.adminProfile?.completeName"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Correo eléctronico</label>
+            <input type="text" class="form-control form-control-lg" formControlName="email">
+            <app-control-message-input [control]="adminProfileForm.controls.email"
+              [configMessages]="controlField?.messages?.adminProfile?.email"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Tipo identificación</label>
+            <select class="form-control form-control-lg" formControlName="documentType">
+              <option *ngFor="let item of documentTypeList;" [value]="item.id">{{item.name}}</option>
+            </select>
+            <app-control-message-input [control]="adminProfileForm.controls.documentType"
+              [configMessages]="controlField?.messages?.adminProfile?.documentType"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Número identificación</label>
+            <input type="text" class="form-control form-control-lg" formControlName="document">
+            <app-control-message-input [control]="adminProfileForm.controls.document"
+              [configMessages]="controlField?.messages?.adminProfile?.document"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Área a la que pertenece</label>
+            <input type="text" class="form-control form-control-lg" formControlName="area">
+            <app-control-message-input [control]="adminProfileForm.controls.area"
+              [configMessages]="controlField?.messages?.adminProfile?.area"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Ciudad</label>
+            <select class="form-control form-control-lg" formControlName="cityId">
+              <option *ngFor="let item of cityList;" [value]="item.id">{{item.name}}</option>
+            </select>
+            <app-control-message-input [control]="adminProfileForm.controls.cityId"
+              [configMessages]="controlField?.messages?.adminProfile?.cityId"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Teléfono</label>
+            <input type="text" class="form-control form-control-lg" formControlName="phone">
+            <app-control-message-input [control]="adminProfileForm.controls.phone"
+              [configMessages]="controlField?.messages?.adminProfile?.phone"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Regional</label>
+            <select class="form-control form-control-lg" formControlName="regionalId">
+              <option *ngFor="let item of regionalList;" [value]="item.id">{{item.name}}</option>
+            </select>
+            <app-control-message-input [control]="adminProfileForm.controls.regionalId"
+              [configMessages]="controlField?.messages?.adminProfile?.regionalId"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Perfil</label>
+            <select class="form-control form-control-lg" formControlName="roleId">
+              <option *ngFor="let item of roleList;" [value]="item.id">{{item.name}}</option>
+            </select>
+            <app-control-message-input [control]="adminProfileForm.controls.roleId"
+              [configMessages]="controlField?.messages?.adminProfile?.roleId"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <div class="custom-control custom-checkbox">
+              <input formControlName="active" type="checkbox" class="custom-control-input" id="personBelongs">
+              <label class="custom-control-label" for="personBelongs">Estado</label>
+              <app-control-message-input [control]="adminProfileForm.controls.active"
+                [configMessages]="controlField?.messages?.adminProfile?.active"></app-control-message-input>
+            </div>
+          </div>
+        </div>
+        <div class="col-12">
+          <div class="form-group">
+            <div class="col-xs-12 p-b-20">
+              <button type="submit" [disabled]="!adminProfileForm.valid || loader"
+                class="btn waves-effect waves-light btn-rounded btn-primary">Actualizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- End admin profile -->
+
+<!-- Start password -->
+<div class="row mt-4" *ngIf="passwordForm">
+  <div class="col-12">
+    <h4>Deseo cambiar contraseña</h4>
+  </div>
+  <div class="col-12">
+    <form [formGroup]="passwordForm" (ngSubmit)="changePassword()" class="form-horizontal m-t-20">
+      <div class="row">
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Constraseña  actual</label>
+            <input type="password" class="form-control form-control-lg" formControlName="currentPassword">
+            <app-control-message-input [control]="passwordForm.controls.currentPassword"
+              [configMessages]="controlField?.messages?.changePassword?.currentPassword"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Nueva contraseña</label>
+            <input type="password" class="form-control form-control-lg" formControlName="newPassword">
+            <app-control-message-input [control]="passwordForm.controls.newPassword"
+              [configMessages]="controlField?.messages?.changePassword?.newPassword"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <div class="form-group">
+            <label for="">Confirmar nueva contraseña</label>
+            <input type="password" class="form-control form-control-lg" formControlName="confirmPassword">
+            <app-control-message-input [control]="passwordForm.controls.confirmPassword"
+              [configMessages]="controlField?.messages?.changePassword?.confirmPassword"></app-control-message-input>
+          </div>
+        </div>
+        <div class="col-12 mt-3">
+          <div class="form-group">
+            <div class="col-xs-12 p-b-20">
+              <button type="submit" [disabled]="!passwordForm.valid || passwordloader"
+                class="btn waves-effect waves-light btn-rounded btn-primary">Actualizar</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+<!-- End password -->

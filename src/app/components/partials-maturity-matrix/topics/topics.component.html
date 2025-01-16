@@ -1,0 +1,50 @@
+<div [formGroup]="controlContainer.control" class="row">
+  <div formArrayName="matrixTopicList" class="col-12">
+    <ng-container *ngFor="let element of matrixTopicList; let idx = index;">
+      <nav class="navbar navbar-light bg-light border pointer" *ngIf="element" [attr.aria-expanded]="!element?.show"
+        aria-controls="topic-collapse-{{idx}}" (click)="show(element)">
+        <div class="row w-100">
+          <div class="col-auto pt-2">
+            <i class="fa text-secondary"
+              [ngClass]="{'fa-angle-down': !element?.show, 'fa-angle-right': element?.show }"></i>
+          </div>
+          <div class="col pt-2">
+            <h5 class="topic">{{ element?.name }} </h5>
+          </div>
+          <div class="col-auto" [formGroupName]="idx">
+            <div class="btn-circle text-center checkTopic" appCheckMatrixStep><i class="fa fa-check text-white"></i> </div>
+          </div>
+        </div>
+      </nav>
+      <div id="topic-collapse-{{idx}}" class="row" [ngbCollapse]="element?.show">
+        <div class="col-12" *ngIf="element?.matrixQuestionList">
+          <ul class="list-group list-group-flush">
+            <li class="question list-group-item" *ngFor="let question of element?.matrixQuestionList; let jdx = index;"
+              [ngClass]="{'active': opened?.selectedIndex === jdx }" (click)="select(question, idx, jdx,matrixTopicList)">{{ question?.name }}</li>
+          </ul>
+        </div>
+        <div class="col-12" *ngIf="!element?.matrixQuestionList">
+          <div class="alert alert-info" role="alert">
+            Sin preguntas encontradas.
+          </div>
+        </div>
+      </div>
+    </ng-container>
+  </div>
+</div>
+
+<div class="row" *ngIf="!matrixTopicList?.length">
+  <div class="col-12">
+    <div class="alert alert-info" role="alert">
+      Sin temas de interes encontradas.
+    </div>
+  </div>
+</div>
+
+
+<div class="row mt-3">
+  <div class="col-12 text-right">
+    <button *ngIf="!first" (click)="back()" class="btn btn-outline-primary btn-rounded mr-2">Anterior</button>
+    <button *ngIf="!last" (click)="next()" class="btn btn-outline-primary btn-rounded">Siguiente</button>
+  </div>
+</div>

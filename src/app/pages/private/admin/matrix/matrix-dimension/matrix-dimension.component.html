@@ -1,0 +1,23 @@
+<app-matrix-manage [keyModule]="keyModule" [grandfatherKey]="grandfatherKey">
+  <ng-template #descriptionContent let-parent>
+    <div class="row">
+      <div class="col-12">
+        <h2> {{ parent?.name }}</h2>
+      </div>
+    </div>
+  </ng-template>
+
+  <ng-template #elementContent let-element>
+    <div class="row pt-3">
+      <div class="col-12">
+        <p><strong class="mr-1">Tipo:</strong>{{ showType(element?.type) }}</p>
+      </div>
+      <div [hidden]="element?.type !== 2" class="col-12 mt-3">
+        <p><strong class="mr-1">Relevancia:</strong>{{ element?.relevance }}</p>
+      </div>
+      <div class="col-12 mt-3">
+        <p>{{ element?.description }}</p>
+      </div>
+    </div>
+  </ng-template>
+</app-matrix-manage>

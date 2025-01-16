@@ -1,0 +1,40 @@
+<!-- Start client data bonding modal -->
+<app-modal-layout #modalLayout [title]="title">
+  <!-- Start body reference -->
+  <ng-template #bodyContent>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <div class="swiper-container">
+            <div class="swiper-wrapper">
+              <div class="swiper-slide col-auto p-0">
+                <img src="assets/images/road-map/1.png" alt="">
+              </div>
+              <div class="swiper-slide col-auto p-0">
+                <img src="assets/images/road-map/2.png" alt="">
+              </div>
+              <div class="swiper-slide col-auto p-0">
+                <img src="assets/images/road-map/3.png" alt="">
+              </div>
+              <div class="swiper-slide col-auto p-0">
+                <img src="assets/images/road-map/4.png" alt="">
+              </div>
+              <div class="swiper-slide col-auto p-0">
+                <img src="assets/images/road-map/5.png" alt="">
+              </div>
+            </div>
+            <!-- Add Arrows -->
+            <div class="swiper-button-next btn btn-light btn-circle">
+              <i class="fas fa-2x fa-caret-right"></i>
+            </div>
+            <div class="swiper-button-prev btn btn-light btn-circle">
+              <i class="fas fa-2x fa-caret-left"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <!-- End body reference -->
+</app-modal-layout>
+<!-- End client data bonding modal -->

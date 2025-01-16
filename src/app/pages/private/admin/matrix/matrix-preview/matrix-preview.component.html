@@ -1,0 +1,52 @@
+<div class="row">
+  <div class="col-12">
+    <div class="w-100 p-4 border border-secondary">
+      <div class="row title">
+        <div class="row title">
+          <div class="col-lg-10 col-xl-10 col-sm-12 col-xs-12 col-md-10">
+           <div *ngIf="knowledge == 1" >
+          <p class="knowledge">No poseo conocimientos acerca de la metodología.</p>
+           </div>
+          <ng-template #two *ngIf="knowledge == 2;">
+            <p class="knowledge"> Planeo implementar BIM dentro de mi organización a corto o mediano plazo,
+               sin embargo actualmente estamos en proceso de estructuración o empezando</p>
+            </ng-template>
+             
+             <ng-template #three *ngIf="knowledge == 3;">
+              <p class="knowledge">Actualmente cuento con algunos procesos, ya tenemos un equipo de responsables BIM
+               y trabajamos permanentemente en adecuar nuestros procesos.</p>
+              </ng-template>
+              
+            <h2>Evaluación de implementación ruta BIM</h2>
+            <p>La siguiente autoevaluación le permitirá identificar el nivel de madurez de su organización o equipo de proyecto a través de la evaluación de 3 componentes: Madurez BIM, Capacidad BIM y Escala Organizacional. A continuación, complete los 
+              siguientes campos con la información que mejor se ajuste a su organización.</p>
+          </div>
+        
+          <div class="col-lg-2 col-xl-2 col-sm-12 col-xs-12 col-md-2">
+            <p class="text-justify instructive">
+              <i class="fa fa-check-circle success"></i> Significa que está seleccionado.
+            </p>
+            <p class="text-justify instructive">
+              <i class="fa fa-check-circle gray"></i> Significa no está seleccionado.
+            </p>
+          </div>
+        
+          <div class="col-12 mt-3">
+            <div class="custom-line">
+            </div>
+          </div>
+        </div>
+
+
+      
+      <div class="row">
+        <div class="col-12" *ngIf="!loaded">
+          <ngb-progressbar type="primary" [value]="100" [striped]="true" height="10px" [animated]="true"></ngb-progressbar>
+        </div>
+        <div class="col-12" *ngIf="loaded">
+          <app-groups></app-groups>
+        </div>
+      </div>
+    </div>
+  </div>  
+</div>

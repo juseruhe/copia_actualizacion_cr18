@@ -1,0 +1,31 @@
+.card {
+  .card-header {
+    font-weight: 600;
+    font-size: 18px;
+    background-color: var(--primary);
+    color: var(--white);
+  }
+
+  .card-body {
+    background-color: var(--white);
+    .content-img {
+      img {
+        max-width: 150px;
+      }
+    }
+    h1 {
+      text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.2);
+    }
+    strong {
+      font-weight: 600;
+    }
+    p {
+      font-weight: normal;
+      font-size: 14px;
+    }
+    .category-result {
+      max-width: 86px;
+    }
+  }
+}
+

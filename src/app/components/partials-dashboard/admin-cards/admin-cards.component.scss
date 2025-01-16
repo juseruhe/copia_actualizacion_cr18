@@ -1,0 +1,44 @@
+.admin-card {
+  &:nth-child(2n+0) {
+    .icon {
+      background-color: var(--success);
+    }
+    .content {
+      h4 {
+        color: var(--success);
+      }
+    }
+  }
+  &:nth-child(2n+1) {
+    .icon {
+      background-color: var(--secondary);
+    }
+    .content {
+      h4 {
+        color: var(--secondary);
+      }
+    }
+  }
+  .card {
+    overflow: hidden;
+    border-radius: 5px;
+    box-shadow: 1px 0px 20px rgba(0, 0, 0, 0.1);
+    border: none;
+    height: 60px;
+    .icon {
+      width: 100%;
+      height: 100%;
+    }
+    .content {
+      width: 100%;
+      height: 100%;
+      .card-text {
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        max-width: 96%;
+        overflow: hidden;
+        font-size: 80%;
+      }
+    }
+  }
+}

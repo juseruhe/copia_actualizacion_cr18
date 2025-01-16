@@ -1,0 +1,24 @@
+<app-create-edit-modal [controlField]="controlField" [name]="name" [data]="data">
+  <ng-template #formContent let-form>
+    <div [formGroup]="form" class="row justify-content-sm-center">
+      <div class="col-12 col-sm-8">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="">Nombre*</label>
+              <input class="form-control" placeholder="Categoría..." formControlName="name">
+              <app-control-message-input [control]="form.controls.name" [configMessages]="controlField?.messages?.name"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="">Puntaje*</label>
+              <input class="form-control" type="number" placeholder="20..." formControlName="score">
+              <app-control-message-input [control]="form.controls.score" [configMessages]="controlField?.messages?.score"></app-control-message-input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</app-create-edit-modal>

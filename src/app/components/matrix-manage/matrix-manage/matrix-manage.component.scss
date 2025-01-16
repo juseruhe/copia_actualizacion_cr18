@@ -1,0 +1,17 @@
+.matrix-element {
+  min-height: 48px;
+  h5 {
+    margin: 0;
+  }
+  background-color: var(--light);
+  &.active {
+    border: 2px solid var(--info);
+  }
+}
+
+.matrix-collapse {
+  background-color: #ededed;
+}
+
+:host::ng-deep {
+}

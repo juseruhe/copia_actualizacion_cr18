@@ -1,0 +1,17 @@
+<app-create-edit-modal [controlField]="controlField" [name]="name" [data]="data">
+  <ng-template #formContent let-form>
+    <div [formGroup]="form" class="row justify-content-sm-center">
+      <div class="col-12 col-sm-8">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="">Nombre*</label>
+              <input class="form-control" placeholder="Subgrupo..." formControlName="name">
+              <app-control-message-input [control]="form.controls.name" [configMessages]="controlField?.messages?.name"></app-control-message-input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</app-create-edit-modal>

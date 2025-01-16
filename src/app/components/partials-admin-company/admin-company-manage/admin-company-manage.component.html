@@ -1,0 +1,108 @@
+<app-create-edit-modal [controlField]="controlField" [name]="name" [data]="data">
+  <ng-template #formContent let-form>
+    <div [formGroup]="form" class="row justify-content-sm-center">
+      <div class="col-12 col-sm-10">
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Nombre de la empresa</label>
+              <input type="text" class="form-control form-control-lg" formControlName="companyName">
+              <app-control-message-input [control]="form.controls.companyName"
+                [configMessages]="controlField?.messages?.companyName"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">NIT de la empresa</label>
+              <input type="text" class="form-control form-control-lg" formControlName="nit">
+              <app-control-message-input [control]="form.controls.nit"
+                [configMessages]="controlField?.messages?.nit"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Nombres y apellidos responsable BIM</label>
+              <input type="text" class="form-control form-control-lg" formControlName="inChargeName">
+              <app-control-message-input [control]="form.controls.inChargeName"
+                [configMessages]="controlField?.messages?.inChargeName"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Cargo dentro de la empresa</label>
+              <input type="text" class="form-control form-control-lg" formControlName="charge">
+              <app-control-message-input [control]="form.controls.charge"
+                [configMessages]="controlField?.messages?.charge"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Correo electrónico corporativo</label>
+              <input type="text" class="form-control form-control-lg" formControlName="email">
+              <app-control-message-input [control]="form.controls.email"
+                [configMessages]="controlField?.messages?.email"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Teléfono contacto</label>
+              <input type="text" class="form-control form-control-lg" formControlName="phone">
+              <app-control-message-input [control]="form.controls.phone"
+                [configMessages]="controlField?.messages?.phone"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Categoría de empresas</label>
+              <select class="form-control form-control-lg" formControlName="categoryId">
+                <option *ngFor="let item of data?.categoryList;" [value]="item.id">{{item.name}}</option>
+              </select>
+              <app-control-message-input [control]="form.controls.categoryId"
+                [configMessages]="controlField?.messages?.categoryId"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Tamaño de la empresa</label>
+              <select class="form-control form-control-lg" formControlName="sizeCompany">
+                <option *ngFor="let item of data?.sizeCompanyList;" [value]="item">{{item}}</option>
+              </select>
+              <app-control-message-input [control]="form.controls.sizeCompany"
+                [configMessages]="controlField?.messages?.sizeCompany"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Ciudad</label>
+              <select class="form-control form-control-lg" formControlName="cityId">
+                <option *ngFor="let item of data?.cityList;" [value]="item.id">{{item.name}}</option>
+              </select>
+              <app-control-message-input [control]="form.controls.cityId"
+                [configMessages]="controlField?.messages?.cityId"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input formControlName="allyCamacol" type="checkbox" class="custom-control-input" id="allyCamacol">
+                <label class="custom-control-label" for="allyCamacol">¿Es afiliado a Camacol?</label>
+                <app-control-message-input [control]="form.controls.allyCamacol"
+                  [configMessages]="controlField?.messages?.allyCamacol"></app-control-message-input>
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input formControlName="belongsBim" type="checkbox" class="custom-control-input" id="companyBelongsBim">
+                <label class="custom-control-label" for="companyBelongsBim">¿Pertenece a BIM Forum?</label>
+                <app-control-message-input [control]="form.controls.belongsBim"
+                  [configMessages]="controlField?.messages?.belongsBim"></app-control-message-input>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</app-create-edit-modal>

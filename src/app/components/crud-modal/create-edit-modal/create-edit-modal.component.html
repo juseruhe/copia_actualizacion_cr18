@@ -1,0 +1,30 @@
+<!-- Start create edit modal -->
+<app-modal-layout #modalLayout [title]="(data?.record?.id ? 'Editar' : 'Crear') + ' ' + name">
+  <!-- Start body reference -->
+  <ng-template #bodyContent>
+    <div class="row">
+      <div class="col-12">
+        <form [formGroup]="form" (ngSubmit)="onSubmit()">
+          <ng-container *ngTemplateOutlet="formContentTmpl, context: { $implicit: form }"></ng-container>
+        </form>
+      </div>
+    </div>
+  </ng-template>
+  <!-- End body reference -->
+
+  <!-- Start footer reference -->
+  <ng-template #footerContent>
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-12">
+          <form class="text-center" (ngSubmit)="onSubmit()" [formGroup]="form">
+            <button type="button" class="btn waves-effect waves-light btn-rounded btn-light mr-3" (click)="closeModal()" [disabled]="loader">Cancelar</button>
+            <button type="submit" class="btn waves-effect waves-light btn-rounded btn-success" [disabled]="!form.valid || loader">{{ data?.record?.id ? 'Editar' : 'Crear' }}</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+  <!-- End footer reference -->
+</app-modal-layout>
+<!-- End create edit modal -->

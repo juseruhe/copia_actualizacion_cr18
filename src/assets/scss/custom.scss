@@ -1,0 +1,44 @@
+// In this scss you can overwrite all our scss, we suggested you to add your scss into this, so whenever the update comes it will not affect your code.
+p {
+  font-size: 16px;
+  font-weight: normal;
+  line-height: 24px;
+}
+
+h2 {
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.pointer {
+  cursor: pointer;
+}
+
+form {
+  label {
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+.custom-line {
+  width: 72px;
+  height: 4px;
+  background: var(--primary);
+  margin-bottom: 16px;
+  &.white {
+    background: var(--white);
+  }
+}
+
+.custom-card {
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0px 4px 10px rgba(59, 59, 158, 0.08);
+}
+
+.road-map-modal {
+  .modal-dialog {
+    max-width: 1280px !important;
+  }
+}

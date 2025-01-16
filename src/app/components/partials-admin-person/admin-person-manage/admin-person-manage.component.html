@@ -1,0 +1,80 @@
+<app-create-edit-modal [controlField]="controlField" [name]="name" [data]="data">
+  <ng-template #formContent let-form>
+    <div [formGroup]="form" class="row justify-content-sm-center">
+      <div class="col-12 col-sm-10">
+        <div class="row">
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Nombre y apellidos</label>
+              <input type="text" class="form-control form-control-lg" formControlName="completeName">
+              <app-control-message-input [control]="form.controls.completeName"
+                [configMessages]="controlField?.messages?.completeName"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Correo eléctronico</label>
+              <input type="text" class="form-control form-control-lg" formControlName="email">
+              <app-control-message-input [control]="form.controls.email"
+                [configMessages]="controlField?.messages?.email"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Tipo identificación</label>
+              <select class="form-control form-control-lg" formControlName="documentType">
+                <option *ngFor="let item of data?.documentTypeList;" [value]="item.id">{{item.name}}</option>
+              </select>
+              <app-control-message-input [control]="form.controls.documentType"
+                [configMessages]="controlField?.messages?.documentType"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Número identificación</label>
+              <input type="text" class="form-control form-control-lg" formControlName="document">
+              <app-control-message-input [control]="form.controls.document"
+                [configMessages]="controlField?.messages?.document"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Nombre comercial</label>
+              <input type="text" class="form-control form-control-lg" formControlName="commercialName">
+              <app-control-message-input [control]="form.controls.commercialName"
+                [configMessages]="controlField?.messages?.commercialName"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Ciudad</label>
+              <select class="form-control form-control-lg" formControlName="cityId">
+                <option *ngFor="let item of data?.cityList;" [value]="item.id">{{item.name}}</option>
+              </select>
+              <app-control-message-input [control]="form.controls.cityId"
+                [configMessages]="controlField?.messages?.cityId"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <label for="">Teléfono</label>
+              <input type="text" class="form-control form-control-lg" formControlName="phone">
+              <app-control-message-input [control]="form.controls.phone"
+                [configMessages]="controlField?.messages?.phone"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12 col-sm-6">
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input formControlName="belongsBim" type="checkbox" class="custom-control-input" id="personBelongs">
+                <label class="custom-control-label" for="personBelongs">¿Pertenece a BIM Forum?</label>
+                <app-control-message-input [control]="form.controls.belongsBim"
+                  [configMessages]="controlField?.messages?.belongsBim"></app-control-message-input>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</app-create-edit-modal>

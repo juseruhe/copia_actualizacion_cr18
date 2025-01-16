@@ -1,0 +1,19 @@
+.modal-fullscreen {
+    width: 100%;
+    height: 100%;
+    max-width: none;
+  }
+  
+  /* Estilo adicional para el cuerpo del modal si es necesario */
+  .modal-fullscreen .modal-body {
+    overflow-y: 100%;
+  }
+
+  ::ng-deep .modal-fullscreen .modal-dialog { 
+    max-width: 70%;
+    width: 70%;
+}
+
+.x:hover{
+  background-color: white;
+}

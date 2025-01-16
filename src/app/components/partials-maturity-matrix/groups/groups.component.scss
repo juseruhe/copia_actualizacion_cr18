@@ -1,0 +1,56 @@
+
+.checkGroup {
+  background-color: var(--primary);
+  &.valid {
+    background-color: var(--success);
+  }
+}
+
+.group {
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 24px;
+  text-transform: uppercase;
+}
+
+.subgroup {
+  font-weight: 600;
+  font-size: 14px;
+  line-height: 21px;
+  text-align: center;
+  border: solid var(--gray);
+  &.active {
+    text-decoration: underline;
+  }
+  .fa {
+    color: var(--gray);
+    &.valid {
+      color: var(--success);
+    }
+  }
+}
+
+nav {
+  background-color: var(--light);
+  &.active {
+    background-color: var(--secondary);
+    border-color: var(--secondary) !important;
+    .group, .fa {
+      color: var(--white);
+    }
+  }
+}
+
+.matrix-loader {
+  position: fixed;
+  border-radius: 5px;
+  background-color: white;
+  width: auto;
+  height: auto;
+  top: 20%;
+  right: -5px;
+  z-index: 2;
+  box-shadow: 5px 8px 10px rgba(59, 59, 158, 0.6);
+  padding: 5px;
+  padding-top: 8px;
+}

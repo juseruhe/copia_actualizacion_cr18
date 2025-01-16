@@ -1,0 +1,105 @@
+<div id="content-header" class="w-100">
+  <app-public-header></app-public-header>
+  <div class="row">
+    <div class="col-12">
+      <app-breadcrumb [side]="'left'" [title]="false"></app-breadcrumb>
+    </div>
+  </div>
+</div>
+
+<div class="auth-wrapper d-flex no-block justify-content-center align-items-center h-100">
+  <div class="cover-bg">
+    <div class="row h-100">
+      <div class="col bg-a bg-white">
+        <div class="content-text d-none d-lg-block">
+          <!-- <h1>RUTA <br> <strong>BIM</strong></h1> -->
+          <img src="./assets/images/landing/Logo RUTA BIM3 (1).png" style="width:40%;" alt="">
+          <h2>!Comienza <br> ahora!</h2>
+        </div>
+      </div>
+      <div class="col bg-b bg-primary d-none d-lg-flex">
+        <div class="content-text w-100">
+          <h3 class="text-white">El futuro de la <br> construcción empieza con <br> la transformación digital</h3>
+          <div class="line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="auth-box">
+    <!-- Start login -->
+    <div id="loginform" class="mt-5" [hidden]="recoverform">
+      <div class="logo">
+        <h3 class="font-medium m-b-20"><strong>Iniciar sesión</strong></h3>
+      </div>
+      <!-- Form -->
+      <div class="row px-4">
+        <div class="col-12">
+          <form [formGroup]="form" (ngSubmit)="onSubmit()" class="form-horizontal m-t-20" id="loginform">
+            <div class="form-group mb-3">
+              <input type="text" class="form-control form-control-lg" formControlName="email" placeholder="Correo eléctronico"
+                aria-label="email" aria-describedby="basic-addon1">
+                <app-control-message-input [control]="form.controls.email" [configMessages]="controlField?.messages?.login?.email"></app-control-message-input>
+            </div>
+            <div class="input-group mb-3">
+              <input [type]="showPassword ? 'text' : 'password'" class="form-control form-control-lg" formControlName="password" placeholder="Contraseña" aria-label="Password"
+                aria-describedby="basic-addon1">
+              <div class="input-group-append pointer" (click)="changeShowPassword()">
+                  <span class="input-group-text"><i class="fa fa-eye" [ngClass]="{'fa-eye': !showPassword, 'fa-eye-slash': showPassword}"></i></span>
+              </div>
+              <app-control-message-input [control]="form.controls.password" [configMessages]="controlField?.messages?.login?.password"></app-control-message-input>
+            </div>
+            <div class="form-group row">
+              <div class="col-md-12">
+                <div class="custom-control custom-checkbox">
+                  <input type="checkbox" class="custom-control-input" id="customCheck1">
+                  <label class="custom-control-label" for="customCheck1">Recordar</label>
+                </div>
+              </div>
+            </div>
+            <div class="form-group text-center">
+              <div class="col-xs-12 p-b-20">
+                <button type="submit" [disabled]="!form.valid || loader" class="btn btn-block waves-effect waves-light btn-rounded btn-primary">Ingresar</button>
+              </div>
+            </div>
+            <div class="form-group m-b-0 m-t-10">
+              <p class="col-sm-12 text-center mb-3">
+                ¿Aún no tiene cuenta? <a [routerLink]="['/register']" class="text-info m-l-5"><span>Regístrese</span></a>
+              </p>
+              <p class="col-sm-12 text-center mb-4">
+                <span (click)="showRecoverForm()" class="pointer">
+                  ¿Olvidó su clave?
+                </span>
+              </p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <!-- End login -->
+
+    <!-- Start recover -->
+    <div id="recoverform" class="p-4" [hidden]="!recoverform">
+      <div class="logo">
+        <!-- <span class="db"><img src="assets/images/logo-icon.png" alt="logo" /></span> -->
+        <h3 class="m-b-20"><i class="fa fa-arrow-left mr-4 pointer" (click)="showRecoverForm()"></i>Recuperar contraseña</h3>
+        <p>Ingrese su correo electrónico y le enviaremos las instrucciones para restablecer su clave</p>
+      </div>
+      <div class="row m-t-20">
+        <form (ngSubmit)="resetPassword()" [formGroup]="resetForm" class="col-12">
+          <div class="form-group row">
+            <div class="col-12">
+              <input class="form-control form-control-lg" type="email" formControlName="email" placeholder="Correo eléctronico">
+              <app-control-message-input [control]="resetForm.controls.email" [configMessages]="controlField?.messages?.reset?.email"></app-control-message-input>
+            </div>
+          </div>
+          <div class="row m-t-20">
+            <div class="col-12">
+              <button type="submit" [disabled]="!resetForm.valid || loader" class="btn btn-block waves-effect waves-light btn-rounded btn-primary">Recuperar</button>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <!-- End recover -->
+  </div>
+</div>

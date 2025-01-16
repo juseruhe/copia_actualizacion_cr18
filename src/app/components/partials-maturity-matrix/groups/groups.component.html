@@ -1,0 +1,73 @@
+<div class="row">
+  <div class="col-12">
+    <form [formGroup]="maturityMatrix.form" class="w-100">
+      <div class="row" formArrayName="matrixGroupList">
+        <div class="col-12">
+          <ng-container *ngFor="let element of maturityMatrix?.data?.matrixGroupList; let idx = index;">
+            <nav [formGroupName]="idx" class="row navbar navbar-dark border pointer mb-3" [ngClass]="{'active': !element?.show }" *ngIf="element"
+              [attr.aria-expanded]="!element?.show" aria-controls="group-collapse-{{idx}}" (click)="show(element)">
+              <div class="row w-100">
+                <div class="col-auto pt-2">
+                  <i class="fa" [ngClass]="{'fa-angle-down': !element?.show, 'fa-angle-right': element?.show }"></i>
+                </div>
+                <div class="col-auto">
+                  <div class="text-center checkGroup" appCheckMatrixStep><i class=" text-white"></i> </div>
+                </div>
+                <div class="col pt-2">
+                  <h3 class="group">{{element?.name}} </h3>
+                </div>
+              </div>
+            </nav>
+            <div [formGroupName]="idx" id="group-collapse-{{idx}}" class="row mb-3" [ngbCollapse]="element?.show">
+              <div formArrayName="matrixSubgroupList" class="col-12 pt-4" *ngIf="element?.matrixSubgroupList">
+                <div class="row justify-content-sm-center mb-3">
+                  <div class="col-11">
+                    <ngb-progressbar type="success"
+                      [value]="((element?.selectedIndex + 1) / element?.matrixSubgroupList.length)*100" [striped]="false"
+                      height="10px" [animated]="false">
+                      {{ element?.selectedIndex + 1 }} / {{ element?.matrixSubgroupList.length }}
+                    </ngb-progressbar>
+                  </div>
+                </div>
+                <div class="row mb-4">
+                  <div class="col" *ngFor="let matrixSubgroup of element?.matrixSubgroupList; let jdx = index;">
+                    <h3 [formGroupName]="jdx" class="subgroup pointer" (click)="select(element, jdx)" [ngClass]="{'active': element?.selectedIndex === jdx }"><i class="fa fa-check-circle mr-2" appCheckMatrixStep></i>{{ matrixSubgroup.name }}</h3>
+                  </div>
+                </div>
+                <ng-container *ngFor="let matrixSubgroup of element?.matrixSubgroupList; let jdx = index;">
+                  <div class="row" [hidden]="element?.matrixSubgroupList[element?.selectedIndex]?.id !== matrixSubgroup?.id">
+                    <div class="col-12">
+                      <app-dimensions [formGroupName]="jdx" [index]="jdx" [first]="idx === 0 && jdx === 0" [last]="idx === (maturityMatrix?.data?.matrixGroupList?.length - 1) && jdx === (element?.matrixSubgroupList?.length - 1)" [matrixDimensionList]="matrixSubgroup.matrixDimensionList" (nextEvent)="nextResponse($event, idx)" (backEvent)="backResponse($event, idx)"></app-dimensions>
+                    </div>
+                  </div>
+                </ng-container>
+              </div>
+              <div class="col-12" *ngIf="!element?.matrixSubgroupList?.length">
+                <div class="alert alert-info" role="alert">
+                  Sin subgrupos encontrados.
+                </div>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row" *ngIf="!maturityMatrix?.data?.matrixGroupList?.length">
+  <div class="col-12">
+    <div class="alert alert-info" role="alert">
+      Sin grupos encontrados.
+    </div>
+  </div>
+</div>
+
+<div [hidden]="!maturityMatrix?.saving" class="matrix-loader shadow border">
+  <div class="row m-0">
+    <div class="spinner-border text-secondary" role="status">
+      <span class="sr-only">Loading...</span>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,44 @@
+<app-create-edit-modal [controlField]="controlField" [name]="name" [data]="data">
+  <ng-template #formContent let-form>
+    <div [formGroup]="form" class="row justify-content-sm-center">
+      <div class="col-12 col-sm-8">
+        <div class="row">
+          <div class="col-12">
+            <div class="form-group">
+              <label for="">Nombre*</label>
+              <input class="form-control" placeholder="Dimensión..." formControlName="name">
+              <app-control-message-input [control]="form.controls.name" [configMessages]="controlField?.messages?.name"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="">Descripción*</label>
+              <textarea class="form-control" placeholder="Describe el Subgrupo..." formControlName="description"></textarea>
+              <app-control-message-input [control]="form.controls.description" [configMessages]="controlField?.messages?.description"></app-control-message-input>
+            </div>
+          </div>
+          <div class="col-12">
+            <div class="form-group">
+              <label for="">Tipo*</label>
+              <select class="form-control" formControlName="type">
+                <option *ngFor="let item of typeList;" [value]="item.id">{{ item.name }}</option>
+              </select>
+              <app-control-message-input [control]="form.controls.type" [configMessages]="controlField?.messages?.type"></app-control-message-input>
+            </div>
+          </div>
+          <div [hidden]="form.controls?.type.value != 2" class="col-12">
+            <div class="form-group">
+              <label for="">Relevancia*</label>
+              <select class="form-control" formControlName="relevance">
+                <option [value]="1">1</option>
+                <option [value]="2">2</option>
+                <option [value]="3">3</option>
+              </select>
+              <app-control-message-input [control]="form.controls.relevance" [configMessages]="controlField?.messages?.relevance"></app-control-message-input>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</app-create-edit-modal>

@@ -1,0 +1,147 @@
+<div class="card">
+  <div class="card-header bg-white">
+    <div class="row">
+      <div class="col">
+        <h3>Parámetros de consulta</h3>
+      </div>
+      <div class="col-auto">
+        <button (click)="changeShow()" aria-controls="collapseFilter" class="btn btn-success btn-circle"><i class="fa fa-angle-down"></i></button>
+      </div>
+    </div>
+  </div>
+  <div class="card-body" id="collapseFilter" [ngbCollapse]="show">
+    <form *ngIf="form" class="w-100" novalidate [formGroup]="form" (ngSubmit)="change()">
+      <div class="row">
+        <div class="col-12 col-md-4">
+          <div class="form-group">
+            <label for="matrixPublishId">Periodo</label>
+            <select name="" class="form-control" formControlName="matrixPublishId">
+              <option [value]="0">Todos</option>
+              <option *ngFor="let item of matrixPublishList;" [value]="item.id">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="form-group">
+            <label for="type">Tipo</label>
+            <select name="" class="form-control" formControlName="type" (change)="changeType($event)">
+              <option [value]="0">Todos</option>
+              <option [value]="1">Empresas</option>
+              <option [value]="2">Personas</option>
+              <option [value]="0">Empresas y Personas con NIT</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="form-group">
+            <label for="belongsBim_like">Afiliado BIM Forum</label>
+            <select name="" class="form-control" formControlName="belongsBim_like">
+              <option [value]="''">Todos</option>
+              <option [value]="0">No</option>
+              <option [value]="1">Si</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="form-group">
+            <label for="preBim">Pre-BIM</label>
+            <select name="" class="form-control" formControlName="preBim">
+              <option [value]="''">Todos</option>
+              <option [value]="0">No</option>
+              <option [value]="1">Si</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="form-group">
+            <label for="city$stateId_equal">Departamento</label>
+            <select name="" class="form-control" formControlName="city$stateId_equal" (change)="changeState($event)">
+              <option [value]="''">Todos</option>
+              <option *ngFor="let item of stateList;" [value]="item.id">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="col-12 col-md-4">
+          <div class="form-group">
+            <label for="cityId_equal">Ciudad</label>
+            <select name="" class="form-control" formControlName="cityId_equal">
+              <option [value]="''">Todos</option>
+              <option *ngFor="let item of cityList;" [hidden]="item.stateId != form.controls.city$stateId_equal.value" [value]="item.id">{{ item.name }}</option>
+            </select>
+          </div>
+        </div>
+
+        <!-- Start company filters -->
+        <ng-container *ngIf="form.controls?.type.value == 1">
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="company$sizeCompany_like">Tamaño de la empresa</label>
+              <select name="" class="form-control" formControlName="company$sizeCompany_like">
+                <option [value]="''">Todos</option>
+                <option *ngFor="let item of sizeCompanyList;" [value]="item">{{ item }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="company$categoryId_like">Categoría</label>
+              <select name="" class="form-control" formControlName="company$categoryId_like">
+                <option [value]="''">Todos</option>
+                <option *ngFor="let item of categoryList;" [value]="item.id">{{ item.name }}</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="allyCamacol_like">Afiliado camacol</label>
+              <select name="" class="form-control" formControlName="allyCamacol_like">
+                <option [value]="''">Todos</option>
+                <option [value]="0">No</option>
+                <option [value]="1">Si</option>
+              </select>
+            </div>
+          </div>
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="companyId">Empresa</label>
+              <select name="" class="form-control" formControlName="companyId">
+                <option [value]="''">Todos</option>
+                <option *ngFor="let item of companyList;" [value]="item.id">{{ item.companyName }}</option>
+              </select>
+            </div>
+          </div>
+        </ng-container>
+        <!-- End company filters -->
+
+        <!-- Start person filters -->
+        <ng-container *ngIf="form.controls?.type.value == 2">
+          <div class="col-12 col-md-4">
+            <div class="form-group">
+              <label for="personId">Persona</label>
+              <select name="" class="form-control" formControlName="personId">
+                <option [value]="''">Todos</option>
+                <option *ngFor="let item of personList;" [value]="item.id">{{ item.completeName }}</option>
+              </select>
+            </div>
+          </div>
+        </ng-container>
+        <!-- End person filters -->
+
+        <div class="col-12">
+          <button type="submit" class="btn waves-effect waves-light btn-rounded btn-secondary" (click)="change()" [disabled]="isEqual() || loader">Consultar</button>
+        </div>
+      </div>
+    </form>
+  </div>
+</div>
+
+<div class="row mt-3" *ngIf="loader">
+  <div class="col-12">
+    <ngb-progressbar type="secondary" [value]="100" [striped]="true" height="10px" [animated]="true"></ngb-progressbar>
+  </div>
+</div>

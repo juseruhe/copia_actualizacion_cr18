@@ -3,6 +3,7 @@
 {
   "compileOnSave": false,
   "compilerOptions": {
+    "baseUrl": "./",
     "outDir": "./dist/out-tsc",
     "strict": true,
     "noImplicitOverride": true,
@@ -22,8 +23,27 @@
     "lib": [
       "ES2022",
       "dom"
-    ]
+    ],
+    "paths": {
+      "@classes/*": ["src/app/classes/*"],
+      "@component/*": ["src/app/components/*"],
+      "@directive/*": ["src/app/directives/*"],
+      "@enum/*": ["src/app/enums/*"],
+      "@guard/*": ["src/app/guards/*"],
+      "@interceptor/*": ["src/app/interceptors/*"],
+      "@interface/*": ["src/app/interfaces/*"],
+      "@layout/*": ["src/app/layouts/*"],
+      "@model/*": ["src/app/models/*"],
+      "@pipe/*": ["src/app/pipes/*"],      
+      "@page/*": ["src/app/pages/*"],
+      "@api/*": ["src/app/providers/api/*"],
+      "@resolver/*": ["src/app/providers/resolver/*"],
+      "@service/*": ["src/app/providers/service/*"],
+      "@util/*": ["src/app/providers/util/*"],
+      "@env/*": ["src/environments/*"],
+    }
   },
+    
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
     "strictInjectionParameters": true,

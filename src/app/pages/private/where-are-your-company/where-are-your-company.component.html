@@ -1,0 +1,73 @@
+<div class="row mb-4" *ngIf="!inside">
+  <div class="col-auto">
+    <button [disabled]="!selected" (click)="next()" class="btn btn-circle btn-primary"><i class="fa fa-angle-right"></i></button>
+  </div>
+</div>
+
+<div class="row title">
+  <div class="col-12">
+    <h2>Cuéntanos en dónde se encuentra tu empresa respecto a BIM</h2>
+  </div>
+  <div class="col-12 mt-3">
+    <div class="custom-line"></div>
+  </div>
+  <div class="col-12">
+    <p>Con el fin de brindar la información adecuada para su organización lo invitamos a indicar
+      donde se encuentra su empresa hoy respecto a BIM seleccionando una (1) de las
+      siguientes opciones: </p>
+  </div>
+</div>
+
+<div class="row mt-5">
+  <div class="col-12 col-sm-6 col-md-4">
+    <div class="w-100">
+      <div class="card custom-card pointer border border-primary" [ngClass]="{'active': selected === knowledge.DONT}" (click)=select(knowledge.DONT)>
+        <div class="card-header headerTitle">
+          <i [hidden]="!lock" class="fa fa-lock"></i> No sé qué es BIM
+        </div>
+        <div class="card-body ">
+          <p class="paragraph">
+            No poseo conocimientos acerca de la metodología.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-4">
+    <div class="w-100">
+      <div class="card custom-card pointer border border-primary" [ngClass]="{'active': selected === knowledge.PLANING}" (click)=select(knowledge.PLANING)>
+        <div class="card-header headerTitle">
+          <i [hidden]="!lock" class="fa fa-lock"></i> Planeo implementar BIM
+        </div>
+        <div class="card-body">
+          <p class="paragraph">
+            Planeo implementar BIM dentro de mi organización a corto o mediano plazo, sin embargo actualmente estamos en proceso de estructuración o empezando
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-12 col-sm-6 col-md-4">
+    <div class="w-100">
+      <div class="card custom-card pointer border border-primary" [ngClass]="{'active': selected === knowledge.ALREADY}" (click)=select(knowledge.ALREADY)>
+        <div class="card-header headerTitle">
+          <i [hidden]="!lock" class="fa fa-lock"></i> Ya tengo procesos BIM
+        </div>
+        <div class="card-body">
+          <p class="paragraph">
+            Actualmente cuento con algunos procesos, ya tenemos un equipo de responsables BIM y trabajamos permanentemente en adecuar nuestros procesos.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-12">
+    <hr>
+  </div>
+  <div class="col-12 text-center mt-3">
+    <button [disabled]="!selected || (inside && lock)" (click)="next()" class="btn btn-primary btn-rounded">{{inside ? 'Guardar' : 'Continuar'}}</button>
+  </div>
+</div>

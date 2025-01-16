@@ -1,0 +1,46 @@
+<div class="row" *ngIf="!loader">
+
+  <div class="col-12 mb-4">
+    <p class="mb-4">La empresa se encuentra en una capacidad <span class="text-primary">{{capacityName}}</span> 
+      una madurez del <span class="text-primary">{{resultCategory?.percentageMaturity}}%</span>.</p>
+    
+    
+          <p class="text-justify ml-2 mb-4"><b>Capacidad BIM </b>hace referencia a las habilidades mínimas de la organización para entregar resultados medibles. De
+            acuerdo con la autoevaluación realizada, la Capacidad BIM de la organización es 
+            <span class="text-primary">{{capacityName}}</span></p>
+        
+  
+  
+    <div class="w-100">
+        <div   class="card-body text-center ">
+          <div    class="w-100 text-center container-fluid" > 
+            <img  id="capacity-card" *ngIf="resultCapacity.relevance !== undefined"  class="w-75  h-75" alt="" src="assets/images/dashboard/{{ resultCapacity?.relevance }}-c.png">            
+    </div>
+  </div>
+
+  
+  <div class="col-12 mb-4">
+    <div class="w-100">
+      <p class="text-justify ml-2"><b>La Madurez BIM</b> hace referencia a la mejora gradual y 
+        continua de la calidad, repetibilidad y predictibilidad con base en la
+        Capacidad BIM de la organización. De acuerdo con la autoevaluación realizada, 
+        la organización se clasifica en el nivel
+        <span class="text-primary">{{resultCategory.categoryName}}</span>, el cual corresponde a 
+        <span class="text-primary">{{resultCategory.maturityType}}</span>. 
+        En términos porcentuales el avance general de la organización se sitúa
+        en un <span class="text-primary">{{resultCategory.percentageMaturity}}%</span>.
+        </p>
+    
+        <div  class="card-body text-center">
+          <div  class="w-100 text-center container-fluid" >
+            <img  id="bim-card" *ngIf="resultCategory?.category" alt="" class="w-75  h-75" src="assets/images/dashboard/{{ resultCategory?.category }}.png" >
+
+          </div>
+        <!--  <strong>{{ resultCategory?.percentage }}%  {{resultCategory.total}}</strong> -->
+        </div>
+    </div>
+  </div>
+  
+
+</div>
+
