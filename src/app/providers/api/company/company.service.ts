@@ -29,16 +29,16 @@ import { Simulation } from './simulation';
 export class CompanyService extends ApiServiceCore {
 
   /* API simulation */
-  protected simulation: Simulation;
+  protected override simulation: Simulation;
 
   /* Endpoint */
-  protected endpoint = '/private/company';
+  protected override endpoint = '/private/company';
 
   /* Key module */
-  protected keyModule = 'company';
+  protected override keyModule = 'company';
 
   constructor(
-    protected restMiddleware: RestMiddlewareService,
+    protected override restMiddleware: RestMiddlewareService,
     protected storageService: StorageService,
     private downloadManageService: DownloadManageService
   ) {
@@ -81,7 +81,7 @@ export class CompanyService extends ApiServiceCore {
     }
   }
 
-  async getExcel(filters?): Promise<IResponse> {
+  async getExcel(filters?: any): Promise<IResponse> {
     try {
       if (this.SIMULATION) {
         return this.simulation.getExcel();

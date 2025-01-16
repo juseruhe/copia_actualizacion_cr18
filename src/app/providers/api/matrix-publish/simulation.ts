@@ -10,10 +10,10 @@ import { MatrixPublish } from '@model/MatrixPublish';
 export class Simulation extends SimulationCore {
 
   /* Temporal `MatrixPublish` records */
-  protected recordList: MatrixPublish[] = data.matrixPublishList;
+  protected override recordList: MatrixPublish[] = data.matrixPublishList;
 
   /* Key module */
-  protected keyModule = 'matrixPublish';
+  protected override keyModule = 'matrixPublish';
 
   constructor() {
     super();

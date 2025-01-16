@@ -10,10 +10,10 @@ import { MatrixCategory } from '@model/MatrixCategory';
 export class Simulation extends SimulationCore {
 
   /* Temporal `MatrixCategory` records */
-  protected recordList: MatrixCategory[] = data.matrixCategoryList;
+  protected override recordList: MatrixCategory[] = data.matrixCategoryList;
 
   /* Key module */
-  protected keyModule = 'matrixCategory';
+  protected override keyModule = 'matrixCategory';
 
   constructor() {
     super();

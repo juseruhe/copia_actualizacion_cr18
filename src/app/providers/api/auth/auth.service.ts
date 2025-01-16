@@ -43,18 +43,18 @@ import { ERole } from '@enum/role.enum';
 export class AuthService extends ApiServiceCore {
 
   /* API simulation */
-  protected simulation: Simulation;
+  protected override simulation: Simulation;
 
   /* Endpoint */
-  protected endpoint = '/auth';
+  protected override endpoint = '/auth';
 
   /* Key module */
-  protected keyModule = 'user';
+  protected override keyModule = 'user';
 
   constructor(
     protected storageService: StorageService,
     protected router: Router,
-    protected restMiddleware: RestMiddlewareService,
+    protected override restMiddleware: RestMiddlewareService,
     private matrixRecordingService: MatrixRecordingService
   ) {
     super(restMiddleware);
@@ -123,7 +123,7 @@ export class AuthService extends ApiServiceCore {
      
       const response = await this.restMiddleware.postRequest(`${this.endpoint}/register/${path}`, body);
       this.router.navigate(['/']);
-      await this.saveLogin(response.data.token, response.data.user);
+      await this.saveLogin(response.data.token, response.data.user, null);
       return response;
     } catch (error) {
       throw error;
@@ -135,24 +135,24 @@ export class AuthService extends ApiServiceCore {
    * @param token: Token session
    * @param user: `User` record
    */
-  private async saveLogin(token: string, user: User, hasMatrixRecording: MatrixRecording = null): Promise<void> {
+  private async saveLogin(token: string, user: User, hasMatrixRecording: MatrixRecording | null): Promise<void> {
     this.storageService.setToken(token);
     const profile = user.company || user.person || user.adminProfile;
     const type = user.company || user.person;
     const name = (profile as Person)?.completeName ||
       (profile as Company)?.inChargeName || (profile as AdminProfile)?.completeName || 'NO DEFINIDO';
     this.storageService.setName(name);
-    this.storageService.setEmail(user.email);
-    this.storageService.setVerify(user.verify);
-    this.storageService.setRole(user.roleId);
+    this.storageService.setEmail(user.email ?? '');
+    this.storageService.setVerify(user.verify ?? 0);
+    this.storageService.setRole(user.roleId ?? 0);
     if (user.roleId !== ERole.SUPERADMIN) {
       const response = await this.matrixRecordingService.getCurrentPeriod();
       this.storageService.setHasMatrixRecording(!!response?.data?.matrixRecording?.id);
     }
     if (type) {
       this.storageService.setType(user.companyId ? 1 : 2);
-      this.storageService.setKnowledge(type.knowledge);
-      this.storageService.setKnowledgeAt(new Date(type.knowledgeAt));
+      this.storageService.setKnowledge(type.knowledge ?? 0);
+      this.storageService.setKnowledgeAt(new Date(type.knowledgeAt ?? ''));
     }
     this.router.navigate(['/']);
   }
@@ -162,24 +162,24 @@ export class AuthService extends ApiServiceCore {
    * @param token: Token session
    * @param user: `User` record
    */
-   private async saveLoginEmail(token: string, user: User, hasMatrixRecording: MatrixRecording = null): Promise<void> {
+   private async saveLoginEmail(token: string, user: User, hasMatrixRecording: MatrixRecording | null): Promise<void> {
     this.storageService.setToken(token);
     const profile = user.company || user.person || user.adminProfile;
     const type = user.company || user.person;
     const name = (profile as Person)?.completeName ||
       (profile as Company)?.inChargeName || (profile as AdminProfile)?.completeName || 'NO DEFINIDO';
     this.storageService.setName(name);
-    this.storageService.setEmail(user.email);
-    this.storageService.setVerify(user.verify);
-    this.storageService.setRole(user.roleId);
+    this.storageService.setEmail(user.email ?? '');
+    this.storageService.setVerify(user.verify ?? 0);
+    this.storageService.setRole(user.roleId ?? 0);
     if (user.roleId !== ERole.SUPERADMIN) {
       const response = await this.matrixRecordingService.getCurrentPeriod();
       this.storageService.setHasMatrixRecording(!!response?.data?.matrixRecording?.id);
     }
     if (type) {
       this.storageService.setType(user.companyId ? 1 : 2);
-      this.storageService.setKnowledge(type.knowledge);
-      this.storageService.setKnowledgeAt(new Date(type.knowledgeAt));
+      this.storageService.setKnowledge(type.knowledge ?? 0);
+      this.storageService.setKnowledgeAt(new Date(type.knowledgeAt ?? ''));
     }
   }
 

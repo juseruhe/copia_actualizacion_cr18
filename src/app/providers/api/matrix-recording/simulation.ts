@@ -13,10 +13,10 @@ import { IResponse } from '@interface/IResponse';
 export class Simulation extends SimulationCore {
 
   /* Temporal `MatrixRecording` records */
-  protected recordList: MatrixRecording[] = data.matrixRecordingList;
+  protected override recordList: MatrixRecording[] = data.matrixRecordingList;
 
   /* Key module */
-  protected keyModule = 'matrixRecording';
+  protected override keyModule = 'matrixRecording';
 
   constructor() {
     super();

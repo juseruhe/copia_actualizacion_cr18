@@ -14,10 +14,10 @@ import { IAdminMatrixInformation } from '@interface/IAdminMatrixInformation';
 export class Simulation extends SimulationCore {
 
   /* Temporal `MatrixResponse` records */
-  protected recordList: MatrixResponse[] = data.matrixDimensionResponseList;
+  protected override recordList: MatrixResponse[] = data.matrixDimensionResponseList;
 
   /* Key module */
-  protected keyModule = 'matrixDimensionResponse';
+  protected override keyModule = 'matrixDimensionResponse';
 
   constructor() {
     super();

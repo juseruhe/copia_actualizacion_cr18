@@ -10,10 +10,10 @@ import { MatrixQuestion } from '@model/MatrixQuestion';
 export class Simulation extends SimulationCore {
 
   /* Temporal `MatrixQuestion` records */
-  protected recordList: MatrixQuestion[] = data.matrixQuestionList;
+  protected override recordList: MatrixQuestion[] = data.matrixQuestionList;
 
   /* Key module */
-  protected keyModule = 'matrixQuestion';
+  protected override keyModule = 'matrixQuestion';
 
   constructor() {
     super();

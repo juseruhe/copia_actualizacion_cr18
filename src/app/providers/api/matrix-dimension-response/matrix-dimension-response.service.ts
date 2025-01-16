@@ -18,16 +18,16 @@ import { IResponse } from '@interface/IResponse';
 export class MatrixDimensionResponseService extends ApiServiceCore {
 
   /* API simulation */
-  protected simulation: Simulation = new Simulation();
+  protected override simulation: Simulation = new Simulation();
 
   /* Endpoint */
-  protected endpoint = '/private/matrixDimensionResponse';
+  protected override endpoint = '/private/matrixDimensionResponse';
 
   /* Key module */
-  protected keyModule = 'matrixDimensionResponse';
+  protected override keyModule = 'matrixDimensionResponse';
 
   constructor(
-    protected restMiddleware: RestMiddlewareService
+    protected override restMiddleware: RestMiddlewareService
   ) {
     super(restMiddleware);
   }

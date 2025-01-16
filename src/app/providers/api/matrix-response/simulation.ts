@@ -15,14 +15,14 @@ import { IGlobalMatrixInformation } from '@interface/IGlobalMatrixInformation';
 export class Simulation extends SimulationCore {
 
   /* Temporal `MatrixResponse` records */
-  protected recordList: MatrixResponse[] = data.matrixResponseList;
+  protected override recordList: MatrixResponse[] = data.matrixResponseList;
 
   protected resultInformation: IAdminMatrixInformation = data.resultInformation;
 
   protected globalResultInformation: IGlobalMatrixInformation = data.globalResultInformation;
 
   /* Key module */
-  protected keyModule = 'matrixResponse';
+  protected override keyModule = 'matrixResponse';
 
   constructor() {
     super();

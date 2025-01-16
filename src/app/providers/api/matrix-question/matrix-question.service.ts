@@ -15,16 +15,16 @@ import { Simulation } from './simulation';
 export class MatrixQuestionService extends ApiServiceCore {
 
   /* API simulation */
-  protected simulation: Simulation = new Simulation();
+  protected override simulation: Simulation = new Simulation();
 
   /* Endpoint */
-  protected endpoint = '/private/matrixQuestion';
+  protected override endpoint = '/private/matrixQuestion';
 
   /* Key module */
-  protected keyModule = 'matrixQuestion';
+  protected override keyModule = 'matrixQuestion';
 
   constructor(
-    protected restMiddleware: RestMiddlewareService
+    protected override restMiddleware: RestMiddlewareService
   ) {
     super(restMiddleware);
   }

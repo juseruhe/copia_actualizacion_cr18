@@ -81,7 +81,7 @@ export class PersonService extends ApiServiceCore {
     }
   }
 
-  async getExcel(filters?): Promise<IResponse> {
+  async getExcel(filters?: any): Promise<IResponse> {
     try {
       if (this.SIMULATION) {
         return this.simulation.getExcel();

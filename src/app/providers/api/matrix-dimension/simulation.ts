@@ -10,10 +10,10 @@ import { MatrixDimension } from '@model/MatrixDimension';
 export class Simulation extends SimulationCore {
 
   /* Temporal `MatrixDimension` records */
-  protected recordList: MatrixDimension[] = data.matrixDimensionList;
+  protected override recordList: MatrixDimension[] = data.matrixDimensionList;
 
   /* Key module */
-  protected keyModule = 'matrixDimension';
+  protected override keyModule = 'matrixDimension';
 
   constructor() {
     super();

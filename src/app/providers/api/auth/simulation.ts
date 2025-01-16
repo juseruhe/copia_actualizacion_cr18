@@ -31,10 +31,10 @@ import { ERole } from '@enum/role.enum';
 export class Simulation extends SimulationCore {
 
   /* Temporal `User` records */
-  protected recordList: User[] = data.userList;
+  protected override recordList: User[] = data.userList;
 
   /* Key module */
-  protected keyModule = 'user';
+  protected override keyModule = 'user';
 
   constructor(
     protected storageService: StorageService,
@@ -55,13 +55,13 @@ export class Simulation extends SimulationCore {
     const name = (profile as Person)?.completeName ||
       (profile as Company)?.inChargeName || (profile as AdminProfile)?.completeName || 'NO DEFINIDO';
     this.storageService.setName(name);
-    this.storageService.setEmail(user.email);
-    this.storageService.setVerify(user.verify);
-    this.storageService.setRole(user.roleId);
+    this.storageService.setEmail(user.email ?? '');
+    this.storageService.setVerify(user.verify ?? 0);
+    this.storageService.setRole(user.roleId ?? 0);
     if (type) {
       this.storageService.setType(user.companyId ? 1 : 2);
-      this.storageService.setKnowledge(type.knowledge);
-      this.storageService.setKnowledgeAt(new Date(type.knowledgeAt));
+      this.storageService.setKnowledge(type.knowledge ?? 0);
+      this.storageService.setKnowledgeAt(new Date(type.knowledgeAt || ''));
     }
     this.router.navigate(['/']);
   }

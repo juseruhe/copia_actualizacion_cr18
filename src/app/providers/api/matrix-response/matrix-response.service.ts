@@ -21,16 +21,16 @@ import { HttpParams } from '@angular/common/http';
 export class MatrixResponseService extends ApiServiceCore {
 
   /* API simulation */
-  protected simulation: Simulation = new Simulation();
+  protected override simulation: Simulation = new Simulation();
 
   /* Endpoint */
-  protected endpoint = '/private/matrixResponse';
+  protected override endpoint = '/private/matrixResponse';
 
   /* Key module */
-  protected keyModule = 'matrixResponse';
+  protected override keyModule = 'matrixResponse';
 
   constructor(
-    protected restMiddleware: RestMiddlewareService,
+    protected override restMiddleware: RestMiddlewareService,
     private downloadManageService: DownloadManageService
   ) {
     super(restMiddleware);
@@ -109,7 +109,7 @@ export class MatrixResponseService extends ApiServiceCore {
     }
   }
 
-  async getResultInformation(filters): Promise<IResponse> {
+  async getResultInformation(filters: any): Promise<IResponse> {
     try {
       if (this.SIMULATION) {
         return this.simulation.getResultInformation();
@@ -141,7 +141,7 @@ export class MatrixResponseService extends ApiServiceCore {
     }
   }
 
-  async getResultInfoExcel(filters): Promise<IResponse> {
+  async getResultInfoExcel(filters: any): Promise<IResponse> {
     try {
       if (this.SIMULATION) {
         return this.simulation.getResultInfoExcel();

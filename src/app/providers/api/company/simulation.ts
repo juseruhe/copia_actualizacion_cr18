@@ -16,10 +16,10 @@ import { StorageService } from '@util/storage/storage.service';
 export class Simulation extends SimulationCore {
 
   /* Temporal `Company` records */
-  protected recordList: Company[] = data.companyList;
+  protected override recordList: Company[] = data.companyList;
 
   /* Key module */
-  protected keyModule = 'company';
+  protected override keyModule = 'company';
 
   constructor(
     protected storageService: StorageService

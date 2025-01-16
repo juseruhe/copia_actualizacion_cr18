@@ -15,16 +15,16 @@ import { Simulation } from './simulation';
 export class CategoryService extends ApiServiceCore {
 
   /* API simulation */
-  protected simulation: Simulation = new Simulation();
+  protected override simulation: Simulation = new Simulation();
 
   /* Endpoint */
-  protected endpoint = '/category';
+  protected override endpoint = '/category';
 
   /* Key module */
-  protected keyModule = 'category';
+  protected override keyModule = 'category';
 
   constructor(
-    protected restMiddleware: RestMiddlewareService
+    protected override restMiddleware: RestMiddlewareService
   ) {
     super(restMiddleware);
   }
