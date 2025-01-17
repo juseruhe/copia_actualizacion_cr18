@@ -10,10 +10,10 @@ import { MatrixSubgroup } from '@model/MatrixSubgroup';
 export class Simulation extends SimulationCore {
 
   /* Temporal `MatrixSubgroup` records */
-  protected recordList: MatrixSubgroup[] = data.matrixSubgroupList;
+  protected override recordList: MatrixSubgroup[] = data.matrixSubgroupList;
 
   /* Key module */
-  protected keyModule = 'matrixSubgroup';
+  protected override keyModule = 'matrixSubgroup';
 
   constructor() {
     super();

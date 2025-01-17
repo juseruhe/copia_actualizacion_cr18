@@ -4,7 +4,7 @@ import { SimulationCore } from '@classes/SimulationCore';
 export class Simulation extends SimulationCore {
 
   /* Key module */
-  protected keyModule = 'upload';
+  protected override keyModule = 'upload';
 
   constructor() {
     super();

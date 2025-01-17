@@ -10,10 +10,10 @@ import { Regional } from '@model/Regional';
 export class Simulation extends SimulationCore {
 
   /* Temporal `Regional` records */
-  protected recordList: Regional[] = data.regionalList;
+  protected override recordList: Regional[] = data.regionalList;
 
   /* Key module */
-  protected keyModule = 'regional';
+  protected override keyModule = 'regional';
 
   constructor() {
     super();

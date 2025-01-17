@@ -38,9 +38,9 @@ import { environment } from '@env/environment';
 })
 export class RegisterComponent implements OnInit, OnDestroy {
 
-  personForm: FormGroup;
+  personForm?: FormGroup;
 
-  companyForm: FormGroup;
+  companyForm?: FormGroup;
 
   controlField: IControlField = controlField;
 
@@ -59,7 +59,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
 
   count = 0;
 
-  temporalData: IRegisterData;
+  temporalData?: IRegisterData;
 
   reCaptchaSiteKey = environment.reCaptchaSiteKey;
 
@@ -73,10 +73,10 @@ export class RegisterComponent implements OnInit, OnDestroy {
   ) { }
 
   ngOnInit() {
-    this.documentTypeList = this.activatedRoute.snapshot.data.documentTypeList || this.documentTypeList;
-    this.cityList = this.activatedRoute.snapshot.data.cityList || this.cityList;
-    this.categoryList = this.activatedRoute.snapshot.data.categoryList || this.categoryList;
-    this.sizeCompanyList = this.activatedRoute.snapshot.data.sizeCompanyList || this.sizeCompanyList;
+    this.documentTypeList = this.activatedRoute.snapshot.data['documentTypeList'] || this.documentTypeList
+    this.cityList = this.activatedRoute.snapshot.data['cityList'] || this.cityList;
+    this.categoryList = this.activatedRoute.snapshot.data['categoryList'] || this.categoryList;
+    this.sizeCompanyList = this.activatedRoute.snapshot.data['sizeCompanyList'] || this.sizeCompanyList;
     this.buildForm();
     this.startListeningApiError();
    
@@ -121,16 +121,62 @@ export class RegisterComponent implements OnInit, OnDestroy {
   }
 
   personRegister() {
-    const data: IRegisterData = this.personForm.getRawValue();
-    data.belongsBim = data.belongsBim === true;
-    this.onSubmit(this.personForm, data);
+    const data: IRegisterData | undefined = this.personForm?.getRawValue() ;
+    //data.belongsBim = data.belongsBim === true;
+    if (data) { 
+      data.belongsBim = data.belongsBim === true; 
+    } else { 
+      console.error('data is undefined');
+     }
+  //  this.onSubmit(this.personForm, data);
+  if (this.companyForm && data) {
+    this.onSubmit(this.companyForm, data);
+} else {
+    // Maneja el caso cuando 'this.companyForm' o 'data' es undefined
+    if (!this.companyForm) {
+        console.log("La variable 'companyForm' es undefined");
+    }
+    if (!data) {
+        console.log("La variable 'data' es undefined");
+    }
+}
   }
 
   companyRegister() {
-    const data: IRegisterData = this.companyForm.getRawValue();
-    data.allyCamacol = data.allyCamacol === true;
-    data.belongsBim = data.belongsBim === true;
+    //const data: IRegisterData = this.companyForm.getRawValue();
+    const data: IRegisterData | undefined = this.companyForm?.getRawValue();
+if (data) {
+  // Usa 'data' aquí
+} else {
+  console.error('companyForm o getRawValue() es undefined');
+}
+
+    /*data.allyCamacol = data.allyCamacol === true;
+    data.belongsBim = data.belongsBim === true;*/
+
+    if (data) {
+      data.allyCamacol = data.allyCamacol === true;
+      data.belongsBim = data.belongsBim === true;
+  } else {
+      // Maneja el caso cuando 'data' es undefined
+      console.log("La variable 'data' es undefined");
+  }
+  
+  //  this.onSubmit(this.companyForm, data);
+
+  if (this.companyForm && data) {
     this.onSubmit(this.companyForm, data);
+} else {
+    // Maneja el caso cuando 'this.companyForm' o 'data' es undefined
+    if (!this.companyForm) {
+        console.log("La variable 'companyForm' es undefined");
+    }
+    if (!data) {
+        console.log("La variable 'data' es undefined");
+    }
+}
+
+
   }
 
   private async onSubmit(form: FormGroup, register: IRegisterData) {
@@ -183,7 +229,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
     const modalRef = this.modalService.open(ConfirmModalComponent);
     modalRef.componentInstance.title = 'Solicitud de NIT';
     modalRef.componentInstance.description =
-    `<p>Lo sentimos el nit: <strong>${this.companyForm.controls.nit.value}</strong>, ha sido registrado.`;
+    `<p>Lo sentimos el nit: <strong>${this.companyForm?.controls["nit"].value}</strong>, ha sido registrado.`;
     modalRef.componentInstance.acceptText = 'Quiero reclamar esta cuenta';
     modalRef.componentInstance.data = true;
     modalRef.result.then(async (result) => {
@@ -196,7 +242,7 @@ export class RegisterComponent implements OnInit, OnDestroy {
   private async requestNit() {
     try {
       this.loader = true;
-      await this.authService.requestNit(this.temporalData);
+      await this.authService.requestNit(this.temporalData );
       this.toastrService.success('Solicitud enviada con éxito', 'Felicidades!');
       this.reset();
     } catch (error) {
@@ -241,9 +287,6 @@ export class RegisterComponent implements OnInit, OnDestroy {
       Validators.maxLength(12)
     ])
 
-    
-
-    
   }
 
  }

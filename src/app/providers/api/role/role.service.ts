@@ -19,16 +19,16 @@ import { Simulation } from './simulation';
 export class RoleService extends ApiServiceCore {
 
   /* API simulation */
-  protected simulation: Simulation;
+  protected override simulation: Simulation;
 
   /* Endpoint */
-  protected endpoint = '/private/role';
+  protected override endpoint = '/private/role';
 
   /* Key module */
-  protected keyModule = 'role';
+  protected override keyModule = 'role';
 
   constructor(
-    protected restMiddleware: RestMiddlewareService,
+    protected override restMiddleware: RestMiddlewareService,
     protected storageService: StorageService
   ) {
     super(restMiddleware);

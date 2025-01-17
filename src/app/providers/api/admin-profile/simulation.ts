@@ -13,10 +13,10 @@ import { IResponse } from '@interface/IResponse';
 export class Simulation extends SimulationCore {
 
   /* Temporal `User` records */
-  protected recordList: AdminProfile[] = data.adminProfileList;
+  protected override recordList: AdminProfile[] = data.adminProfileList;
 
   /* Key module */
-  protected keyModule = 'adminProfile';
+  protected override keyModule = 'adminProfile';
 
   constructor() {
     super();

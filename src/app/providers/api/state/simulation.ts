@@ -10,10 +10,10 @@ import { Category } from '@model/Category';
 export class Simulation extends SimulationCore {
 
   /* Temporal `Category` records */
-  protected recordList: Category[] = data.stateList;
+  protected override recordList: Category[] = data.stateList;
 
   /* Key module */
-  protected keyModule = 'state';
+  protected override keyModule = 'state';
 
   constructor() {
     super();

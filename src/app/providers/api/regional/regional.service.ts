@@ -15,16 +15,16 @@ import { Simulation } from './simulation';
 export class RegionalService extends ApiServiceCore {
 
   /* API simulation */
-  protected simulation: Simulation = new Simulation();
+  protected override simulation: Simulation = new Simulation();
 
   /* Endpoint */
-  protected endpoint = '/private/regional';
+  protected override endpoint = '/private/regional';
 
   /* Key module */
-  protected keyModule = 'regional';
+  protected override keyModule = 'regional';
 
   constructor(
-    protected restMiddleware: RestMiddlewareService
+    protected override restMiddleware: RestMiddlewareService
   ) {
     super(restMiddleware);
   }

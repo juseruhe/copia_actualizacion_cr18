@@ -21,16 +21,16 @@ import { Simulation } from './simulation';
 export class UploadService extends ApiServiceCore {
 
   /* API simulation */
-  protected simulation: Simulation = new Simulation();
+  protected override simulation: Simulation = new Simulation();
 
   /* Endpoint */
-  protected endpoint = '/private/upload';
+  protected override endpoint = '/private/upload';
 
   /* Key module */
-  protected keyModule = 'upload';
+  protected override keyModule = 'upload';
 
   constructor(
-    protected restMiddleware: RestMiddlewareService,
+    protected override restMiddleware: RestMiddlewareService,
     private downloadManageService: DownloadManageService
   ) {
     super(restMiddleware);

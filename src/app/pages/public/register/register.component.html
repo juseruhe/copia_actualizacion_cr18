@@ -304,7 +304,7 @@
                   <div class="custom-control custom-checkbox">
                     <input formControlName="allyCamacol" type="checkbox" class="custom-control-input" id="allyCamacol">
                     <label class="custom-control-label" for="allyCamacol">¿Es afiliado a Camacol?</label>
-                    <app-control-message-input [control]="companyForm.controls.allyCamacol"
+                    <app-control-message-input *ngIf="companyForm && companyForm.controls['allyCamacol'] instanceof FormControl " [control]="companyForm.controls['allyCamacol'] as FormControl"
                       [configMessages]="controlField?.messages?.company?.allyCamacol"></app-control-message-input>
                   </div>
                 </div>
@@ -327,8 +327,8 @@
                     <strong>
                       <a class="terms pointer" (click)="openTerms()">habeas data y política de tratamiento de datos </a>
                     </strong>
-                    <app-control-message-input [control]="companyForm.controls.terms"
-                      [configMessages]="controlField?.messages?.company?.terms"></app-control-message-input>
+                    <app-control-message-input  *ngIf="companyForm && companyForm.controls['terms'] instanceof FormControl" [control]="companyForm.controls['terms'] as FormControl "
+                      [configMessages]="controlField?.messages?.company['terms']"></app-control-message-input>
                   </div>
                 </div>
               </div>
