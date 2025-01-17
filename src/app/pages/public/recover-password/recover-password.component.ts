@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 
@@ -21,13 +21,13 @@ import { AuthService } from '@api/auth/auth.service';
 })
 export class RecoverPasswordComponent implements OnInit {
 
-  form: FormGroup;
+  form!: FormGroup 
 
   controlField: IControlField = controlField;
 
   loader = false;
 
-  token: string;
+  token!: string;
 
   showPassword = false;
 
@@ -40,7 +40,7 @@ export class RecoverPasswordComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.token = this.activatedRoute.snapshot.params.token;
+    this.token = this.activatedRoute.snapshot.params["token"];
     this.buildForm();
   }
 
@@ -64,7 +64,7 @@ export class RecoverPasswordComponent implements OnInit {
   async onSubmit() {
     if (this.form.valid) {
       this.changeFormLoader(true);
-      const password = this.form.get('password').value;
+      //const password = this.form.get('password').value;
       try {
         await this.authService.restorerPassword(password, this.token);
         this.toastrService.success('Contraseña actualizada con éxito.', 'Felicidades!');
@@ -78,6 +78,11 @@ export class RecoverPasswordComponent implements OnInit {
 
   changeShowPassword() {
     this.showPassword = !this.showPassword;
+  }
+
+  get passwordControl(): FormControl | undefined {
+    const control = this.form?.get('password');
+    return control instanceof FormControl ? control : undefined;
   }
 
 }

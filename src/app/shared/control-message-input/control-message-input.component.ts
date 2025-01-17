@@ -9,7 +9,8 @@ import { FormGroup, FormControl } from '@angular/forms';
 })
 export class ControlMessageInputComponent implements OnInit {
 
-  @Input() control: FormControl;
+  //@Input() control: FormControl;
+  @Input() control: FormControl = new FormControl();
   @Input() configMessages = {};
 
   constructor() { }

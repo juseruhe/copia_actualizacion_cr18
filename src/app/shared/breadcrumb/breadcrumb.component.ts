@@ -8,10 +8,10 @@ import { filter, map, mergeMap } from 'rxjs/operators';
   templateUrl: './breadcrumb.component.html'
 })
 export class BreadcrumbComponent implements OnInit {
-  @Input() layout;
+  @Input() layout: any;
   @Input() side = 'right';
   @Input() title = true;
-  pageInfo;
+  pageInfo: any;
   constructor(
     private router: Router,
     private activatedRoute: ActivatedRoute,

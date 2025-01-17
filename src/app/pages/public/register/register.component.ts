@@ -1,5 +1,5 @@
 import { Component, OnDestroy, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup,Validators } from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup,Validators } from '@angular/forms';
 import { ToastrService } from 'ngx-toastr';
 import { NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
@@ -184,7 +184,15 @@ if (data) {
       this.changeFormLoader(form, true);
       try {
         this.temporalData = register;
-        this.temporalData.city = +this.temporalData.city;
+        //this.temporalData.city = +this.temporalData.city;4
+
+        if (this.temporalData && this.temporalData.city !== undefined) {
+          this.temporalData.city = +this.temporalData.city;
+      } else {
+          // Maneja el caso cuando 'this.temporalData' o 'this.temporalData.city' es undefined
+          console.log("La variable 'temporalData' o 'temporalData.city' es undefined");
+      }
+      
 
         // document in person
         if(register.documentType && register.documentType == 'NIT'){
@@ -242,7 +250,7 @@ if (data) {
   private async requestNit() {
     try {
       this.loader = true;
-      await this.authService.requestNit(this.temporalData );
+      await this.authService.requestNit(this.temporalData ?? {} );
       this.toastrService.success('Solicitud enviada con éxito', 'Felicidades!');
       this.reset();
     } catch (error) {
@@ -252,40 +260,82 @@ if (data) {
   }
 
   private reset() {
-    this.personForm.reset();
-    this.companyForm.reset();
-    this.temporalData = null;
+    this.personForm?.reset();
+    this.companyForm?.reset();
+    //this.temporalData = null;
+    this.temporalData = {};
     this.count = 0;
   }
 
   changeValidatorsNIT(event: any){
     if (event.target.value == 'NIT') {
       // Cuando el tipo de documento es NIT, ajusta las validaciones
-      this.personForm.get('document').setValidators([
+    /*  this.personForm.get('document').setValidators([
         Validators.required,
         Validators.minLength(9), // Cambia el valor mínimo según tus necesidades
         Validators.maxLength(9),
         Validators.max(999999999),
         Validators.min(100000000) // Cambia el valor máximo según tus necesidades
-      ]);
+      ]);*/
+
+      const documentControl = this.personForm?.get('document');
+if (documentControl) {
+    documentControl.setValidators([
+        Validators.required,
+        Validators.minLength(9), // Cambia el valor mínimo según tus necesidades
+        Validators.maxLength(9),
+        Validators.max(999999999),
+        Validators.min(100000000) // Cambia el valor máximo según tus necesidades
+    ]);
+} else {
+    // Maneja el caso cuando 'documentControl' es null
+    console.log("El control 'document' no existe en 'personForm'");
+}
 
 
-      this.personForm.get('document2').setValidators([
+
+/*      this.personForm.get('document2').setValidators([
         Validators.required,
         Validators.minLength(0),
         Validators.maxLength(1),
         Validators.max(9),
         Validators.min(0)
-      ])
+      ])*/
+
+        const documentControl2 = this.personForm?.get('document2');
+        if (documentControl2) {
+            documentControl2.setValidators([
+                Validators.required,
+                Validators.minLength(9), // Cambia el valor mínimo según tus necesidades
+                Validators.maxLength(9),
+                Validators.max(999999999),
+                Validators.min(100000000) // Cambia el valor máximo según tus necesidades
+            ]);
+        } else {
+            // Maneja el caso cuando 'documentControl' es null
+            console.log("El control 'document' no existe en 'personForm'");
+        }
 
       
       
   } else {
-    this.personForm.get('document').setValidators([
+   /* this.personForm.get('document').setValidators([
       Validators.required,
       Validators.minLength(4), // Cambia el valor mínimo según tus necesidades
       Validators.maxLength(12)
-    ])
+    ])*/
+
+      const documentControl = this.personForm?.get('document');
+      if (documentControl) {
+          documentControl.setValidators([
+              Validators.required,
+              Validators.minLength(4), // Cambia el valor mínimo según tus necesidades
+              Validators.maxLength(12) // Cambia el valor máximo según tus necesidades
+          ]);
+      } else {
+          // Maneja el caso cuando 'documentControl' es null
+          console.log("El control 'document' no existe en 'personForm'");
+      }
 
   }
 
@@ -309,6 +359,35 @@ if (data) {
   if (inputValue.length > maxLength) {
     input.value = inputValue.slice(0, maxLength);
   }
+}
+
+get categoryControl(): FormControl | undefined {
+  return this.companyForm?.get('category') as FormControl | undefined;
+}
+
+get document2Control(): FormControl | undefined {
+  const control = this.personForm?.get('document2');
+  return control instanceof FormControl ? control : undefined;
+}
+
+get documentControl(): FormControl | undefined {
+  const control = this.personForm?.get('document');
+  return control instanceof FormControl ? control : undefined;
+}
+
+get documentTypeControl(): FormControl | undefined {
+  const control = this.personForm?.get('documentType');
+  return control instanceof FormControl ? control : undefined;
+}
+
+get emailControl(): FormControl | undefined {
+  const control = this.personForm?.get('email');
+  return control instanceof FormControl ? control : undefined;
+}
+
+get completeNameControl(): FormControl | undefined {
+  const control = this.personForm?.get('completeName');
+  return control instanceof FormControl ? control : undefined;
 }
 
 

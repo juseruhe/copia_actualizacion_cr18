@@ -57,7 +57,7 @@
                 <div class="form-group">
                   <label for="">Nombre y apellidos</label>
                   <input type="text" class="form-control form-control-lg" formControlName="completeName">
-                  <app-control-message-input [control]="personForm.controls.completeName"
+                  <app-control-message-input [control]="completeNameControl"
                     [configMessages]="controlField?.messages?.person?.completeName"></app-control-message-input>
                 </div>
               </div>
@@ -65,7 +65,7 @@
                 <div class="form-group">
                   <label for="">Correo eléctronico</label>
                   <input type="text" class="form-control form-control-lg" formControlName="email">
-                  <app-control-message-input [control]="personForm.controls.email"
+                  <app-control-message-input [control]="emailControl"
                     [configMessages]="controlField?.messages?.person?.email"></app-control-message-input>
                 </div>
               </div>
@@ -75,8 +75,10 @@
                   <select class="form-control form-control-lg" formControlName="documentType" (change)="changeValidatorsNIT($event)" >
                     <option *ngFor="let item of documentTypeList;" [value]="item.id">{{item.name}}</option>
                   </select>
-                  <app-control-message-input [control]="personForm.controls.documentType"
-                    [configMessages]="controlField?.messages?.person?.documentType"></app-control-message-input>
+                 <!-- <app-control-message-input [control]="personForm.controls.documentType"
+                    [configMessages]="controlField?.messages?.person?.documentType"></app-control-message-input> -->
+                    <app-control-message-input [control]="documentTypeControl" [configMessages]="controlField?.messages?.person?.documentType">
+                    </app-control-message-input>
                 </div>
               </div>
               <div class="col-12 col-sm-6" *ngIf="personForm.get('documentType').value!='NIT'">
@@ -84,8 +86,12 @@
                   <label for="">Número identificación</label>
                   <input type="number" class="form-control form-control-lg" formControlName="document" 
                   maxlength="12" (input)="limiteCaracteres($event,12)"  >
-                  <app-control-message-input [control]="personForm.controls.document"
-                    [configMessages]="controlField?.messages?.person?.document"></app-control-message-input>
+                <!--  <app-control-message-input [control]="personForm.controls.document"
+                    [configMessages]="controlField?.messages?.person?.document"></app-control-message-input> -->
+
+                    <app-control-message-input [control]="documentControl" [configMessages]="controlField?.messages?.person?.document">
+                    </app-control-message-input>
+
                 </div>
               </div>
               <!-- En caso del Tipo de Documento sea NIT-->
@@ -94,8 +100,11 @@
                   <label for="">Número identificación</label>
                   <input type="number" class="form-control form-control-lg" formControlName="document"  
                   maxlength="9" (input)="limiteCaracteres($event,9)"  >
-                  <app-control-message-input [control]="personForm.controls.document"
-                    [configMessages]="controlField?.messages?.person?.document"></app-control-message-input>
+                <!-- <app-control-message-input [control]="personForm?.controls?.['document']"
+                    [configMessages]="controlField?.messages?.person?.document"></app-control-message-input> -->
+           
+                    <app-control-message-input [control]="document2Control" [configMessages]="controlField?.messages?.person?.document2">
+                    </app-control-message-input>
                 </div>
               </div>
               <div class="col-12 col-sm-2" *ngIf="personForm.get('documentType').value=='NIT'">
@@ -103,7 +112,7 @@
                   <label for="">#</label>
                   <input type="number" class="form-control form-control-lg" formControlName="document2"
                   maxlength="1" min="0" (input)="limiteCaracteres($event,1)"  >
-                  <app-control-message-input [control]="personForm.controls.document2"
+                  <app-control-message-input [control]="personForm?.controls?.['document2']"
                     [configMessages]="controlField?.messages?.person?.document2"></app-control-message-input>
                 </div>
               </div>
@@ -111,7 +120,7 @@
                 <div class="form-group">
                   <label for="">Nombre comercial</label>
                   <input type="text" class="form-control form-control-lg" formControlName="commercialName">
-                  <app-control-message-input [control]="personForm.controls.commercialName"
+                  <app-control-message-input [control]="personForm?.controls?.['commercialName']"
                     [configMessages]="controlField?.messages?.person?.commercialName"></app-control-message-input>
                 </div>
               </div>
@@ -266,7 +275,14 @@
                         [ngClass]="{'fa-eye': !showPassword, 'fa-eye-slash': showPassword}"></i></span>
                   </div>
                 </div>
+      
+                <!--
                 <app-control-message-input [control]="companyForm.controls.password" [configMessages]="controlField?.messages?.company?.password"></app-control-message-input>
+              -->
+
+              <app-control-message-input *ngIf="companyForm && companyForm.controls['password']" [control]="companyForm.controls['password']" [configMessages]="controlField?.messages?.company?.password"></app-control-message-input>
+
+                
               </div>
               <div class="col-12 col-sm-6">
                 <div class="form-group">
@@ -274,8 +290,13 @@
                   <select class="form-control form-control-lg" formControlName="category">
                     <option *ngFor="let item of categoryList;" [value]="item.id">{{item.name}}</option>
                   </select>
-                  <app-control-message-input [control]="companyForm.controls.category"
+                  <!---
+                  <app-control-message-input [control]="companyForm.controls['category']"
                     [configMessages]="controlField?.messages?.company?.category"></app-control-message-input>
+                -->
+                <app-control-message-input [control]="categoryControl" [configMessages]="controlField?.messages?.company?.category">
+                </app-control-message-input>
+
                 </div>
               </div>
               <div class="col-12 col-sm-6">
@@ -304,7 +325,7 @@
                   <div class="custom-control custom-checkbox">
                     <input formControlName="allyCamacol" type="checkbox" class="custom-control-input" id="allyCamacol">
                     <label class="custom-control-label" for="allyCamacol">¿Es afiliado a Camacol?</label>
-                    <app-control-message-input *ngIf="companyForm && companyForm.controls['allyCamacol'] instanceof FormControl " [control]="companyForm.controls['allyCamacol'] as FormControl"
+                    <app-control-message-input [control]="companyForm.controls['allyCamacol']"
                       [configMessages]="controlField?.messages?.company?.allyCamacol"></app-control-message-input>
                   </div>
                 </div>
@@ -314,8 +335,9 @@
                   <div class="custom-control custom-checkbox">
                     <input formControlName="belongsBim" type="checkbox" class="custom-control-input" id="companyBelongsBim">
                     <label class="custom-control-label" for="companyBelongsBim">¿Pertenece a BIM Forum?</label>
-                    <app-control-message-input [control]="companyForm.controls.belongsBim"
-                      [configMessages]="controlField?.messages?.company?.belongsBim"></app-control-message-input>
+                    <app-control-message-input [control]="companyForm.controls['belongsBim']"
+                    [configMessages]="controlField?.messages?.company?.['belongsBim']"></app-control-message-input>
+                
                   </div>
                 </div>
               </div>
@@ -327,7 +349,7 @@
                     <strong>
                       <a class="terms pointer" (click)="openTerms()">habeas data y política de tratamiento de datos </a>
                     </strong>
-                    <app-control-message-input  *ngIf="companyForm && companyForm.controls['terms'] instanceof FormControl" [control]="companyForm.controls['terms'] as FormControl "
+                    <app-control-message-input  *ngIf="companyForm && companyForm.controls['terms'] " [control]="companyForm.controls['terms']"
                       [configMessages]="controlField?.messages?.company['terms']"></app-control-message-input>
                   </div>
                 </div>
